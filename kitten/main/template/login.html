@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="description" content="Phozogy Template">
+    <meta name="keywords" content="Phozogy, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Phozogy | Template</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Quantico:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap" rel="stylesheet">
+
+    <!-- CSS Styles -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/elegant-icons.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/slicknav.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+
+    <style>
+        body {
+            background-color: #f5f5f5;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            background-image: url('{% static 'img/hero/photographer.jpg' %}');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Overlay background */
+        .overlay-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        /* Login box styles */
+        .login-box {
+            max-width: 400px;
+            width: 100%;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            margin-top: -100px; /* Moved the box up more */
+        }
+
+        .login-box h2 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-control {
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            width: 100%;
+        }
+
+        .alert {
+            margin-top: 20px;
+        }
+
+        .forgot-password {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            text-decoration: none;
+        }
+
+        /* Header styles */
+        header {
+            background-color: green;
+            color: white;
+        }
+
+        .header-section {
+            padding: 15px 0;
+        }
+
+        .logo img {
+            max-width: 200px;
+        }
+
+        .nav-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-menu ul li {
+            display: inline-block;
+            margin-right: 15px;
+        }
+
+        .nav-menu ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-menu .dropdown {
+            display: none;
+            position: absolute;
+            background-color: white;
+            padding: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-menu ul li:hover .dropdown {
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+   <header style="background-color:black;color:white;" class="header-section">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="logo" style="float: left;">
+                        <a href="./index.html">
+                            <img src="{% static 'img/logo.png' %}" alt="">
+                        </a>
+                    </div>
+                    <nav class="nav-menu mobile-menu" style="float: right;">
+                        <ul>
+                            <li ><a href="home"  style="text-transform: capitalize; color: white;">Home</a></li>
+                            <li><a href="about1"  style="text-transform: capitalize; color: white;">About</a></li>
+                            <li><a href="service1"  style="text-transform: capitalize; color: white;">Services</a></li>
+                             <li><a href="../all_photographers_imagess/"  style="text-transform: capitalize; color: white;">Gallery</a></li>
+                            <li><a href="login_view"  style="text-transform: capitalize; color: white;">Login</a></li>
+                            <li><a href="reg"  style="text-transform: capitalize; color: white;">Sign Up</a></li>
+                        </ul>
+                    </nav>
+
+                    <div id="mobile-menu-wrap"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+<section class="hero-section">
+    <div class="overlay-bg"></div>
+    <div class="login-box">
+        <h2>Login</h2>
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="Username" class="form-control" required>
+            <input type="password" name="password" placeholder="Password" class="form-control" required>
+            <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+
+        {% if messages %}
+            <div>
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <a href="forgot_pswd" class="forgot-password">Forgot Password?</a>
+    </div>
+</section>
+
+</body>
+</html>

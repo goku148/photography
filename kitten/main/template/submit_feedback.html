@@ -1,0 +1,494 @@
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    {% load static %}-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Provide Feedback</title>-->
+<!--    <style>-->
+<!--         body {-->
+<!--            font-family: 'Open Sans', sans-serif;-->
+<!--            margin: 0;-->
+<!--            padding: 0;-->
+<!--            background-image: url("{% static 'img/hero/photographer.jpg' %}");-->
+<!--            background-size: cover;-->
+<!--            background-repeat: no-repeat;-->
+<!--            background-attachment: fixed;-->
+<!--            background-position: center;-->
+<!--            min-height: 100vh;-->
+<!--            display: flex;-->
+<!--            flex-direction: column;-->
+<!--        }-->
+
+<!--        .header-section {-->
+<!--    background-color: rgba(0, 0, 0, 0.85);-->
+<!--    color: white;-->
+<!--    padding: 22px 0;-->
+<!--    display: flex; /* Use flexbox for layout */-->
+<!--    align-items: center;-->
+<!--    justify-content: space-between; /* Align logo and nav menu to edges */-->
+<!--    }-->
+
+
+<!--/* Navigation menu aligned to the right */-->
+<!--.nav-menu {-->
+<!--    margin-left: auto; /* Pushes the menu to the far right */-->
+<!--}-->
+
+<!--.nav-menu ul {-->
+<!--    list-style: none;-->
+<!--    display: flex;-->
+<!--    padding: 0;-->
+<!--    margin: 0;-->
+<!--}-->
+
+<!--.nav-menu ul li {-->
+<!--    margin-left: 20px;-->
+<!--}-->
+
+<!--.nav-menu ul li a {-->
+<!--    color: white;-->
+<!--    text-decoration: none;-->
+<!--    font-weight: bold;-->
+<!--    padding: 7px 0px;-->
+<!--    border-radius: 5px;-->
+<!--    font-size: 17px;-->
+<!--    transition: background-color 0.3s, color 0.3s;-->
+<!--    text-transform: capitalize; /* Makes only the first letter uppercase */-->
+<!--}-->
+
+<!--.nav-menu ul li a:hover {-->
+<!--    background-color: #4CAF50;-->
+<!--    color: white;-->
+<!--}-->
+
+
+<!--       .container {-->
+<!--    background: #fff;-->
+<!--    border-radius: 15px;-->
+<!--    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);-->
+<!--    padding: 30px;-->
+<!--    max-width: 500px;-->
+<!--    width: 100%;-->
+<!--    margin: auto; /* Center the container horizontally */-->
+<!--    margin-top: 50px; /* Add some space from the top */-->
+<!--}-->
+<!--        h1 {-->
+<!--            text-align: center;-->
+<!--            font-size: 24px;-->
+<!--            margin-bottom: 20px;-->
+<!--            color: #333;-->
+<!--        }-->
+
+<!--        .form-group {-->
+<!--            margin-bottom: 20px;-->
+<!--            position: relative;-->
+<!--        }-->
+
+<!--        .form-group label {-->
+<!--            display: block;-->
+<!--            font-size: 14px;-->
+<!--            margin-bottom: 5px;-->
+<!--            color: #555;-->
+<!--        }-->
+
+<!--        .form-group input,-->
+<!--        .form-group textarea {-->
+<!--            width: 91%;-->
+<!--            padding: 15px;-->
+<!--            border: 1px solid #ddd;-->
+<!--            border-radius: 10px;-->
+<!--            font-size: 14px;-->
+<!--            outline: none;-->
+<!--            transition: all 0.3s;-->
+<!--            background-color: #f9f9f9;-->
+<!--        }-->
+
+<!--        .form-group input:focus,-->
+<!--        .form-group textarea:focus {-->
+<!--            border-color: #007BFF;-->
+<!--            box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);-->
+<!--            background-color: #fff;-->
+<!--        }-->
+
+<!--        .form-group textarea {-->
+<!--            resize: vertical;-->
+<!--        }-->
+
+<!--        .rating-box {-->
+<!--            border: 2px solid #ddd;-->
+<!--            padding: 15px;-->
+<!--            border-radius: 10px;-->
+<!--            background-color: #f9f9f9;-->
+<!--            display: inline-block;-->
+<!--            text-align: center;-->
+<!--            width: 91%;-->
+<!--            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);-->
+<!--            margin-top: 6px;-->
+<!--        }-->
+
+<!--        .rating {-->
+<!--            display: flex;-->
+<!--            justify-content: center;-->
+<!--            gap: 15px;-->
+<!--            font-size: 30px;-->
+<!--            cursor: pointer;-->
+<!--        }-->
+
+<!--        .rating input {-->
+<!--            display: none;-->
+<!--        }-->
+
+<!--        .rating label {-->
+<!--            color: lightblue;-->
+<!--            transition: color 0.3s;-->
+<!--             font-size: inherit;-->
+<!--        }-->
+
+<!--        .rating input:checked ~ label,-->
+<!--        .rating label:hover,-->
+<!--        .rating label:hover ~ label {-->
+<!--            color: green; /* Gold for selected stars */-->
+<!--        }-->
+
+<!--        .btn {-->
+<!--            display: block;-->
+<!--            width: 100%;-->
+<!--            padding: 15px;-->
+<!--            background: linear-gradient(135deg, #007BFF, #00C6FF);-->
+<!--            color: #fff;-->
+<!--            border: none;-->
+<!--            border-radius: 10px;-->
+<!--            font-size: 16px;-->
+<!--            font-weight: bold;-->
+<!--            text-transform: uppercase;-->
+<!--            cursor: pointer;-->
+<!--            transition: all 0.3s;-->
+<!--        }-->
+
+<!--        .btn:hover {-->
+<!--            background: linear-gradient(135deg, #0056b3, #009ec6);-->
+<!--            transform: translateY(-2px);-->
+<!--        }-->
+
+<!--        .btn:active {-->
+<!--            transform: translateY(1px);-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<header class="header-section">-->
+<!--    <div class="container-fluid d-flex align-items-center">-->
+<!--        <div class="logo">-->
+<!--            <a href="./index.html">-->
+<!--                <img src="{% static 'img/logo.png' %}" alt="Logo">-->
+<!--            </a>-->
+<!--        </div>-->
+<!--        <nav class="nav-menu">-->
+<!--            <ul class="d-flex">-->
+<!--               <li><a href="../user_dashboard">Home</a></li>-->
+<!--                        <li><a href="../about">About</a></li>-->
+<!--                        <li><a href="../service">Services</a></li>-->
+<!--                     <li> <a href="{% url 'all_photographers_images' %}">gallary</a></li>-->
+<!--&lt;!&ndash;                        <li><a href="viewproduct">Accessories</a></li>&ndash;&gt;-->
+<!--                        <li><a href="../show_photographer">Photographers</a></li>-->
+<!--                        <li><a href="../user_profile/">Profile</a></li>-->
+<!--                        <li> <a class="nav-link" href="{% url 'submit_feedback' %}">Feedback</a></li>-->
+<!--                        <li><a href="../logout">Logout</a></li>-->
+<!--            </ul>-->
+<!--        </nav>-->
+<!--    </div>-->
+<!--</header>-->
+
+<!--<div class="container">-->
+<!--    <h1>Provide Feedback</h1>-->
+<!--    <form method="POST">-->
+<!--        {% csrf_token %}-->
+
+<!--        &lt;!&ndash; Username &ndash;&gt;-->
+<!--        <div class="form-group">-->
+<!--            <label for="username">Your Username</label>-->
+<!--            <input type="text" id="username" name="username" value="{{ user.username }}" readonly>-->
+<!--        </div>-->
+
+<!--        &lt;!&ndash; Review &ndash;&gt;-->
+<!--        <div class="form-group">-->
+<!--            <label for="review">Your Review</label>-->
+<!--            <textarea id="review" name="review" rows="4" placeholder="Write your feedback here..."></textarea>-->
+<!--        </div>-->
+
+<!--        &lt;!&ndash; Rating &ndash;&gt;-->
+<!--        <div class="form-group">-->
+<!--            <label for="rating">Rating</label>-->
+<!--            <div class="rating-box">-->
+<!--                <div class="rating">-->
+<!--                    <input type="radio" id="star5" name="rating" value="5">-->
+<!--                    <label for="star5" title="5 stars">★</label>-->
+<!--                    <input type="radio" id="star4" name="rating" value="4">-->
+<!--                    <label for="star4" title="4 stars">★</label>-->
+<!--                    <input type="radio" id="star3" name="rating" value="3">-->
+<!--                    <label for="star3" title="3 stars">★</label>-->
+<!--                    <input type="radio" id="star2" name="rating" value="2">-->
+<!--                    <label for="star2" title="2 stars">★</label>-->
+<!--                    <input type="radio" id="star1" name="rating" value="1">-->
+<!--                    <label for="star1" title="1 star">★</label>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--        &lt;!&ndash; Submit Button &ndash;&gt;-->
+<!--        <button type="submit" class="btn">Submit Feedback</button>-->
+<!--    </form>-->
+<!--</div>-->
+
+<!--</body>-->
+<!--</html>-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Provide Feedback</title>
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url("{% static 'img/hero/photographer.jpg' %}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header Section */
+        .header-section {
+            background-color: rgba(0, 0, 0, 0.85);
+            color: white;
+            padding: 22px 0;
+            display: flex; /* Use flexbox */
+            align-items: center;
+            justify-content: space-between; /* Space between logo and nav menu */
+        }
+
+        .header-section .logo img {
+            height: 50px; /* Adjust logo size if needed */
+        }
+
+        /* Navigation Menu */
+        .nav-menu {
+            margin-left: auto;
+        }
+
+        .nav-menu ul {
+            list-style: none;
+            display: flex;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-menu ul li {
+            margin-left: 20px;
+        }
+
+        .nav-menu ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 7px 15px;
+            border-radius: 5px;
+            font-size: 17px;
+            transition: background-color 0.3s, color 0.3s;
+            text-transform: capitalize; /* Makes only the first letter uppercase */
+        }
+
+        .nav-menu ul li a:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        /* Center Container */
+        .container {
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            max-width: 460px;
+            width: 96%;
+            margin: auto; /* Center horizontally */
+            margin-top: 50px; /* Add spacing from the top */
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 91%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 14px;
+            outline: none;
+            transition: all 0.3s;
+            background-color: #f9f9f9;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #007BFF;
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+            background-color: #fff;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+        }
+
+        .rating-box {
+            border: 2px solid #ddd;
+            padding: 15px;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            display: inline-block;
+            text-align: center;
+            width: 91%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 6px;
+        }
+
+        .rating {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        .rating input {
+            display: none;
+        }
+
+        .rating label {
+            color: lightblue;
+            transition: color 0.3s;
+            font-size: inherit;
+        }
+
+        .rating input:checked ~ label,
+        .rating label:hover,
+        .rating label:hover ~ label {
+            color: green;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #007BFF, #00C6FF);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: linear-gradient(135deg, #0056b3, #009ec6);
+            transform: translateY(-2px);
+        }
+
+        .btn:active {
+            transform: translateY(1px);
+        }
+    </style>
+</head>
+<body>
+<header class="header-section">
+    <div class="logo">
+        <a href="./index.html">
+            <img src="{% static 'img/logo.png' %}" alt="Logo">
+        </a>
+    </div>
+    <nav class="nav-menu">
+        <ul>
+            <li><a href="../user_dashboard">Home</a></li>
+            <li><a href="../about">About</a></li>
+            <li><a href="../service">Services</a></li>
+            <li><a href="{% url 'all_photographers_images' %}">Gallery</a></li>
+            <li><a href="../show_photographer">Photographers</a></li>
+            <li><a href="../user_profile/">Profile</a></li>
+            <li><a href="{% url 'submit_feedback' %}">Feedback</a></li>
+            <li><a href="../logout">Logout</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="container">
+    <h1>Provide Feedback</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <!-- Username -->
+        <div class="form-group">
+            <label for="username">Your Username</label>
+            <input type="text" id="username" name="username" value="{{ user.username }}" readonly>
+        </div>
+
+        <!-- Review -->
+        <div class="form-group">
+            <label for="review">Your Review</label>
+            <textarea id="review" name="review" rows="4" placeholder="Write your feedback here..."></textarea>
+        </div>
+
+        <!-- Rating -->
+        <div class="form-group">
+            <label for="rating">Rating</label>
+            <div class="rating-box">
+                <div class="rating">
+                    <input type="radio" id="star5" name="rating" value="5">
+                    <label for="star5" title="5 stars">★</label>
+                    <input type="radio" id="star4" name="rating" value="4">
+                    <label for="star4" title="4 stars">★</label>
+                    <input type="radio" id="star3" name="rating" value="3">
+                    <label for="star3" title="3 stars">★</label>
+                    <input type="radio" id="star2" name="rating" value="2">
+                    <label for="star2" title="2 stars">★</label>
+                    <input type="radio" id="star1" name="rating" value="1">
+                    <label for="star1" title="1 star">★</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn">Submit Feedback</button>
+    </form>
+</div>
+</body>
+</html>

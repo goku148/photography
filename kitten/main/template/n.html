@@ -1,0 +1,554 @@
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Book a Photographer</title>-->
+<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">-->
+<!--    <style>-->
+<!--        body {-->
+<!--            font-family: 'Arial', sans-serif;-->
+<!--            background: linear-gradient(to bottom, #ffffff, #e6f2ff);-->
+<!--            color: #333;-->
+<!--            min-height: 100vh;-->
+<!--            margin: 0;-->
+<!--            display: flex;-->
+<!--            flex-direction: column;-->
+<!--        }-->
+<!--        .container {-->
+<!--            background: #fff;-->
+<!--            padding: 40px;-->
+<!--            border-radius: 8px;-->
+<!--            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);-->
+<!--            max-width: 600px;-->
+<!--            width: 100%;-->
+<!--            margin: 20px auto;-->
+<!--        }-->
+<!--        h1 {-->
+<!--            text-align: center;-->
+<!--            margin-bottom: 20px;-->
+<!--            color: black;-->
+<!--        }-->
+<!--        .btn-success {-->
+<!--            width: 100%;-->
+<!--            font-size: 16px;-->
+<!--            font-weight: bold;-->
+<!--        }-->
+<!--        footer {-->
+<!--            margin-top: 20px;-->
+<!--            text-align: center;-->
+<!--            color: #777;-->
+<!--        }-->
+<!--        .total-cost-display {-->
+<!--            font-size: 18px;-->
+<!--            font-weight: bold;-->
+<!--            color: #28a745;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--    <div class="container">-->
+<!--        <h1>Book a Photographer</h1>-->
+<!--        <form id="bookingForm" method="POST" action="">-->
+<!--            {% csrf_token %}-->
+<!--            <div class="form-group">-->
+<!--                <label for="username">Full Name:</label>-->
+<!--                <input type="text" class="form-control" name="username" id="username" value="{{user.username}}" placeholder="Enter your full name" required>-->
+<!--            </div>-->
+<!--            <div class="form-group">-->
+<!--                <label for="email">Email:</label>-->
+<!--                <input type="email" class="form-control" name="email" id="email" value="{{user.email}}" placeholder="Enter your email" required>-->
+<!--            </div>-->
+<!--            <div class="form-group">-->
+<!--                <label for="phone">Phone Number:</label>-->
+<!--                <input type="tel" class="form-control" name="phone" id="phone" value="{{user.phonenumber}}" placeholder="Enter your phone number" required>-->
+<!--            </div>-->
+<!--            <div class="form-group">-->
+<!--                <label for="event_type">Event Type:</label>-->
+<!--                <input type="text" class="form-control" name="event_type" id="event_type" placeholder="E.g., Wedding, Corporate Event" required>-->
+<!--            </div>-->
+<!--            <div class="form-group">-->
+<!--                <label for="event_date">Event Date:</label>-->
+<!--                <input type="date" class="form-control" name="event_date" id="event_date" required min="{{ today }}">-->
+<!--            </div>-->
+<!--            <div class="form-group">-->
+<!--                <label for="event_location">Event Location:</label>-->
+<!--                <input type="text" class="form-control" name="event_location" id="event_location" placeholder="Enter event location" required>-->
+<!--            </div>-->
+<!--            <div class="form-group">-->
+<!--                <label for="hours_needed">Hours Needed:</label>-->
+<!--                <input type="number" class="form-control" name="hours_needed" id="hours_needed" min="1" placeholder="Enter hours needed" required>-->
+<!--            </div>-->
+<!--            <div class="form-group">-->
+<!--                <label for="hourly_rate">Hourly Rate (₹):</label>-->
+<!--                <input type="text" class="form-control" name="hourly_rate" id="hourly_rate" value="{{rate}}" readonly required>-->
+<!--            </div>-->
+<!--            <div class="form-group">-->
+<!--                <p>Total Cost (₹): <span id="total_cost_display" class="total-cost-display">0.00</span></p>-->
+<!--            </div>-->
+<!--            <div class="form-group">-->
+<!--                <label for="additional_notes">Additional Notes:</label>-->
+<!--                <textarea class="form-control" name="additional_notes" id="additional_notes" rows="3" placeholder="Add any extra details about your booking..."></textarea>-->
+<!--            </div>-->
+<!--&lt;!&ndash;           <a href="uregister/{{ pk.Photographer_id}}">&ndash;&gt;-->
+
+<!--               <button type="submit"   class="btn btn-success" id="submit_button">Submit Booking</button></a>-->
+<!--        </form>-->
+<!--        <footer>&copy; 2024 Photography Booking. All rights reserved.</footer>-->
+<!--    </div>-->
+
+
+<!--<script>-->
+<!--    const hoursInput = document.getElementById('hours_needed');-->
+<!--    const rateInput = document.getElementById('hourly_rate');-->
+<!--    const totalCostDisplay = document.getElementById('total_cost_display');-->
+<!--    const submitButton = document.getElementById('submit_button');-->
+
+<!--    // Calculate the total cost dynamically-->
+<!--    function calculateTotal() {-->
+<!--        const hours = parseFloat(hoursInput.value) || 0;-->
+<!--        const rate = parseFloat(rateInput.value) || 0;-->
+<!--        const total = hours * rate;-->
+<!--        totalCostDisplay.textContent = total.toFixed(2);-->
+<!--    }-->
+
+<!--    // Handle form submission and show "Processing..."-->
+<!--    function disableButton() {-->
+<!--        submitButton.disabled = true;-->
+<!--        submitButton.textContent = 'Processing...';-->
+<!--    }-->
+
+<!--    // Re-enable the button once the page redirects (optional server-side confirmation)-->
+<!--    window.addEventListener('load', () => {-->
+<!--        submitButton.disabled = false;-->
+<!--        submitButton.textContent = 'Submit Booking';-->
+<!--    });-->
+
+<!--    hoursInput.addEventListener('input', calculateTotal);-->
+<!--</script>-->
+
+<!--</body>-->
+<!--</html>-->
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Book a Photographer</title>-->
+<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">-->
+<!--    <style>-->
+<!--        body {-->
+<!--            font-family: 'Arial', sans-serif;-->
+<!--            background: linear-gradient(to bottom, #ffffff, #e6f2ff);-->
+<!--            color: #333;-->
+<!--            min-height: 100vh;-->
+<!--            margin: 0;-->
+<!--            display: flex;-->
+<!--            align-items: center;-->
+<!--            justify-content: center;-->
+<!--        }-->
+
+<!--        .container {-->
+<!--            background: #fff;-->
+<!--            padding: 20px 30px;-->
+<!--            border-radius: 12px;-->
+<!--            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);-->
+<!--            max-width: 500px; /* Reduced max width */-->
+<!--            width: 100%;-->
+<!--        }-->
+
+<!--        h1 {-->
+<!--            text-align: center;-->
+<!--            margin-bottom: 20px;-->
+<!--            color: #333;-->
+<!--            font-size: 22px; /* Slightly smaller font size */-->
+<!--        }-->
+
+<!--        .form-group {-->
+<!--            margin-bottom: 15px; /* Reduced margin between form groups */-->
+<!--            display: flex;-->
+<!--            align-items: center;-->
+<!--        }-->
+
+<!--        .form-group label {-->
+<!--            flex: 0 0 30%;-->
+<!--            font-weight: bold;-->
+<!--            margin-right: 10px;-->
+<!--        }-->
+
+<!--        .form-group input,-->
+<!--        .form-group textarea {-->
+<!--            flex: 1;-->
+<!--        }-->
+
+<!--        .form-control {-->
+<!--            width: 100%;-->
+<!--            padding: 8px;-->
+<!--            border-radius: 5px;-->
+<!--            border: 1px solid #ccc;-->
+<!--        }-->
+
+<!--        .form-control:focus {-->
+<!--            outline: none;-->
+<!--            border-color: #4caf50;-->
+<!--            box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);-->
+<!--        }-->
+
+<!--        .btn-success {-->
+<!--            width: 100%;-->
+<!--            padding: 8px;-->
+<!--            font-size: 14px; /* Reduced font size */-->
+<!--            font-weight: bold;-->
+<!--            margin-top: 15px;-->
+<!--            border-radius: 5px;-->
+<!--        }-->
+
+<!--        footer {-->
+<!--            margin-top: 20px;-->
+<!--            text-align: center;-->
+<!--            color: #777;-->
+<!--            font-size: 12px;-->
+<!--        }-->
+
+<!--        .total-cost-display {-->
+<!--            font-size: 16px;-->
+<!--            font-weight: bold;-->
+<!--            color: #28a745;-->
+<!--            margin-left: 10px;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+
+<!--<body>-->
+<!--    <div class="container">-->
+<!--        <h1>Book a Photographer</h1>-->
+<!--        <form id="bookingForm" method="POST" action="">-->
+<!--            {% csrf_token %}-->
+<!--            <div class="form-group">-->
+<!--                <label for="username">Full Name:</label>-->
+<!--                <input type="text" class="form-control" name="username" id="username" value="{{user.username}}" placeholder="Enter your full name" readonly>-->
+<!--            </div>-->
+<!--            <div class="form-group">-->
+<!--                <label for="email">Email:</label>-->
+<!--                <input type="email" class="form-control" name="email" id="email" value="{{user.email}}" placeholder="Enter your email" readonly>-->
+<!--            </div>-->
+<!--            <div class="form-group">-->
+<!--                <label for="phone">Phone Number:</label>-->
+<!--                <input type="tel" class="form-control" name="phone" id="phone" value="{{user.phonenumber}}" placeholder="Enter your phone number" readonly>-->
+<!--            </div>-->
+<!--            <div class="form-group">-->
+<!--                <label for="event_type">Event Type:</label>-->
+<!--                <input type="text" class="form-control" name="event_type" id="event_type" placeholder="E.g., Wedding, Corporate Event" required>-->
+<!--            </div>-->
+<!--            <div class="form-group">-->
+<!--                <label for="event_date">Event Date:</label>-->
+<!--                <input type="date" class="form-control" name="event_date" id="event_date" required min="{{ today }}">-->
+<!--            </div>-->
+<!--            <div class="form-group">-->
+<!--                <label for="event_location">Event Location:</label>-->
+<!--                <input type="text" class="form-control" name="event_location" id="event_location" placeholder="Enter event location" required>-->
+<!--            </div>-->
+<!--            <div class="form-group">-->
+<!--                <label for="hours_needed">Hours Needed:</label>-->
+<!--                <input type="number" class="form-control" name="hours_needed" id="hours_needed" min="1" placeholder="Enter hours needed" required>-->
+<!--            </div>-->
+<!--            <div class="form-group">-->
+<!--                <label for="hourly_rate">Hourly Rate (₹):</label>-->
+<!--                <input type="text" class="form-control" name="hourly_rate" id="hourly_rate" value="{{rate}}" readonly required>-->
+<!--            </div>-->
+<!--            <div class="form-group">-->
+<!--                <label>Total Cost (₹):</label>-->
+<!--                <span id="total_cost_display" class="total-cost-display">0.00</span>-->
+<!--            </div>-->
+<!--            <div class="form-group">-->
+<!--                <label for="additional_notes">Additional Notes:</label>-->
+<!--                <textarea class="form-control" name="additional_notes" id="additional_notes" rows="3" placeholder="Add any extra details about your booking..."></textarea>-->
+<!--            </div>-->
+<!--            <button type="submit" class="btn btn-success" id="submit_button">Submit Booking</button>-->
+<!--        </form>-->
+<!--        <footer>&copy; 2024 Photography Booking. All rights reserved.</footer>-->
+<!--    </div>-->
+
+<!--    <script>-->
+<!--        const hoursInput = document.getElementById('hours_needed');-->
+<!--        const rateInput = document.getElementById('hourly_rate');-->
+<!--        const totalCostDisplay = document.getElementById('total_cost_display');-->
+<!--        const submitButton = document.getElementById('submit_button');-->
+
+<!--        // Calculate the total cost dynamically-->
+<!--        function calculateTotal() {-->
+<!--            const hours = parseFloat(hoursInput.value) || 0;-->
+<!--            const rate = parseFloat(rateInput.value) || 0;-->
+<!--            const total = hours * rate;-->
+<!--            totalCostDisplay.textContent = total.toFixed(2);-->
+<!--        }-->
+
+<!--        hoursInput.addEventListener('input', calculateTotal);-->
+
+<!--        // Handle form submission and show "Processing..."-->
+<!--        function disableButton() {-->
+<!--            submitButton.disabled = true;-->
+<!--            submitButton.textContent = 'Processing...';-->
+<!--        }-->
+
+<!--        window.addEventListener('load', () => {-->
+<!--            submitButton.disabled = false;-->
+<!--            submitButton.textContent = 'Submit Booking';-->
+<!--        });-->
+<!--    </script>-->
+<!--</body>-->
+
+<!--</html>-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Photographer</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url("{% static 'img/hero/photographer.jpg' %}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+
+        }
+         .header-section {
+    background-color: rgba(0, 0, 0, 0.85);
+    color: white;
+    padding: 30px 0;
+}
+
+.nav-menu {
+    margin-left: auto; /* Pushes the menu to the far right */
+}
+
+.nav-menu ul {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-menu ul li {
+    margin-left: 20px;
+}
+
+.nav-menu ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 7px 15px;
+    border-radius: 5px;
+    font-size: 17px;
+    transition: background-color 0.3s, color 0.3s;
+      text-transform: capitalize; /* Makes only the first letter uppercase */
+}
+
+.nav-menu ul li a:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+
+
+        .container {
+            background: #fff;
+            padding: 20px 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 22px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .form-group label {
+            flex: 0 0 30%;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            flex: 1;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #4caf50;
+            box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+        }
+
+        .btn-success {
+            width: 100%;
+            padding: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-top: 15px;
+            border-radius: 5px;
+        }
+
+        footer {
+            margin-top: 20px;
+            text-align: center;
+            color: #777;
+            font-size: 12px;
+        }
+
+        .total-cost-display {
+            font-size: 16px;
+            font-weight: bold;
+            color: #28a745;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+<header class="header-section">
+    <div class="container-fluid d-flex align-items-center">
+        <div class="logo">
+            <a href="./index.html">
+                <img src="{% static 'img/logo.png' %}" alt="Logo">
+            </a>
+        </div>
+        <nav class="nav-menu">
+            <ul class="d-flex">
+               <li><a href="../user_dashboard">Home</a></li>
+                        <li><a href="../about">About</a></li>
+                        <li><a href="../service">Services</a></li>
+<!--                        <li><a href="viewproduct">Accessories</a></li>-->
+                        <li><a href="../show_photographer">Photographers</a></li>
+                        <li><a href="../user_profile/">Profile</a></li>
+                        <li><a href="../logout">Logout</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+    <div class="container">
+        <h1>Book a Photographer</h1>
+        <form id="bookingForm" method="POST" action="">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="username">Full Name:</label>
+                <input type="text" class="form-control" name="username" id="username" value="{{user.username}}" placeholder="Enter your full name" readonly>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" name="email" id="email" value="{{user.email}}" placeholder="Enter your email" readonly>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number:</label>
+                <input type="tel" class="form-control" name="phone" id="phone" value="{{user.phonenumber}}" placeholder="Enter your phone number" readonly>
+            </div>
+            <div class="form-group">
+                <label for="event_type">Event Type:</label>
+                <input type="text" class="form-control" name="event_type" id="event_type"  pattern="^[A-Za-z\s]+$"  placeholder="E.g., Wedding, Corporate Event"  required>
+            </div>
+            <div class="form-group">
+                <label for="event_date">Event Date:</label>
+                <input type="date" class="form-control" name="event_date" id="event_date" required>
+            </div>
+            <div class="form-group">
+                <label for="event_location">Event Location:</label>
+                <input type="text" class="form-control" name="event_location" id="event_location" placeholder="Enter event location" required>
+            </div>
+            <div class="form-group">
+                <label for="hours_needed">Hours Needed:</label>
+                <input type="number" class="form-control" name="hours_needed" id="hours_needed" min="1" placeholder="Enter hours needed" required>
+            </div>
+            <div class="form-group">
+                <label for="hourly_rate">Hourly Rate (₹):</label>
+                <input type="text" class="form-control" name="hourly_rate" id="hourly_rate" value="{{rate}}" readonly required>
+            </div>
+            <div class="form-group">
+                <label>Total Cost (₹):</label>
+                <span id="total_cost_display" class="total-cost-display">0.00</span>
+            </div>
+            <div class="form-group">
+                <label for="additional_notes">Additional Notes:</label>
+                <textarea class="form-control" name="additional_notes" id="additional_notes" rows="3" placeholder="Add any extra details about your booking..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-success" id="submit_button">Submit Booking</button>
+        </form>
+        <footer>&copy; 2024 Photography Booking. All rights reserved.</footer>
+    </div>
+
+    <script>
+        const hoursInput = document.getElementById('hours_needed');
+        const rateInput = document.getElementById('hourly_rate');
+        const totalCostDisplay = document.getElementById('total_cost_display');
+        const submitButton = document.getElementById('submit_button');
+
+        // Calculate the total cost dynamically
+        function calculateTotal() {
+            const hours = parseFloat(hoursInput.value) || 0;
+            const rate = parseFloat(rateInput.value) || 0;
+            const total = hours * rate;
+            totalCostDisplay.textContent = total.toFixed(2);
+        }
+
+        hoursInput.addEventListener('input', calculateTotal);
+
+        // Set the minimum date for the date input field
+        document.addEventListener("DOMContentLoaded", function () {
+            const eventDateInput = document.getElementById("event_date");
+            const today = new Date();
+            const year = today.getFullYear();
+            const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are 0-based
+            const day = String(today.getDate()).padStart(2, '0');
+            const minDate = `${year}-${month}-${day}`; // Format: YYYY-MM-DD
+
+            // Set the minimum date to today's date
+            eventDateInput.setAttribute("min", minDate);
+        });
+
+        // Handle form submission and show "Processing..."
+        function disableButton() {
+            submitButton.disabled = true;
+            submitButton.textContent = 'Processing...';
+        }
+
+        window.addEventListener('load', () => {
+            submitButton.disabled = false;
+            submitButton.textContent = 'Submit Booking';
+        });
+    </script>
+</body>
+
+</html>

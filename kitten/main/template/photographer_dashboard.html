@@ -1,0 +1,283 @@
+<!--<<html lang="en">-->
+<!--<head>-->
+<!--    {% load static %}-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="description" content="Phozogy Template">-->
+<!--    <meta name="keywords" content="Phozogy, unica, creative, html">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+<!--    <title>Phozogy | Template</title>-->
+
+<!--    &lt;!&ndash; Google Font &ndash;&gt;-->
+<!--    <link href="https://fonts.googleapis.com/css?family=Quantico:400,700&display=swap" rel="stylesheet">-->
+<!--    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap" rel="stylesheet">-->
+
+<!--    &lt;!&ndash; Css Styles &ndash;&gt;-->
+<!--    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">-->
+<!--    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" type="text/css">-->
+<!--    <link rel="stylesheet" href="{% static 'css/elegant-icons.css' %}" type="text/css">-->
+<!--    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" type="text/css">-->
+<!--    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}" type="text/css">-->
+<!--    <link rel="stylesheet" href="{% static 'css/slicknav.min.css' %}" type="text/css">-->
+<!--    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">-->
+
+<!--    <style>-->
+<!--        body {-->
+<!--            font-family: 'Open Sans', sans-serif;-->
+<!--            background-color: #f8f9fa;-->
+<!--            margin: 0;-->
+<!--            padding: 0;-->
+<!--        }-->
+
+<!--        .welcome-message {-->
+<!--            color: white;-->
+<!--            padding: 20px;-->
+<!--            border-radius: 10px;-->
+<!--            text-align: center;-->
+<!--            margin: 50px 0;-->
+<!--            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);-->
+<!--        }-->
+
+<!--        .welcome-message h1 {-->
+<!--            font-size: 2.5rem;-->
+<!--            font-weight: 700;-->
+<!--            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);-->
+<!--        }-->
+
+<!--        .welcome-message i {-->
+<!--            font-size: 1.5rem;-->
+<!--            margin-right: 10px;-->
+<!--        }-->
+
+<!--        .nav-menu {-->
+<!--            flex-grow: 1;-->
+<!--        }-->
+
+<!--        .nav-menu ul {-->
+<!--            display: flex;-->
+<!--            justify-content: flex-start; /* Align items to the left */-->
+<!--        }-->
+
+<!--        .nav-menu ul li {-->
+<!--            margin-left: 20px; /* Space between menu items */-->
+<!--        }-->
+
+<!--        .right-menu {-->
+<!--            display: flex;-->
+<!--            align-items: center;-->
+<!--            font-size: 2.5rem;-->
+
+<!--        }-->
+
+<!--        .right-menu a {-->
+<!--            margin-left: 26px; /* Space between profile and logout */-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<header class="header-section">-->
+<!--    <div class="container-fluid">-->
+<!--        <div class="row">-->
+<!--            <div class="col-lg-12 d-flex justify-content-between align-items-center">-->
+<!--                <div class="logo">-->
+<!--                    <a href="./index.html">-->
+<!--                        <img src="{% static 'img/logo.png' %}" alt="Logo" style="max-height: 50px;">-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--                <nav class="nav-menu">-->
+<!--                    <ul class="d-flex list-unstyled mb-0">-->
+<!--                        <li class="active"><a href="home">Home</a></li>-->
+<!--                        <li><a href="show_images">show images</a></li>-->
+<!--                        <li><a href="upload_image">Upload Image </a></li>-->
+<!--                        <li><a href="add_photographer">add details</a></li>-->
+<!--                        <li><a href="">Accessories</a></li>-->
+<!--                    </ul>-->
+<!--                </nav>-->
+<!--                <div class="right-menu">-->
+<!--                    <a href="cameraman_profile">-->
+<!--                        <i class="fa fa-user" aria-hidden="true"></i>-->
+<!--                    </a>-->
+<!--                    <a href="logout" class="btn btn-danger">-->
+<!--                        <i class="fa fa-sign-out" aria-hidden="true"></i> Log Out-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</header>-->
+
+<!--<div class="welcome-message">-->
+<!--    <h1><i class ="fa fa-smile-o" aria-hidden="true"></i> Welcome, {{ photographer.fullname }}!</h1>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phozogy | Template</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Quantico:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/elegant-icons.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/slicknav.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url("{% static 'img/hero/photographer.jpg' %}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+      .header-section {
+    background-color: rgba(0, 0, 0, 0.85);
+    color: white;
+    padding: 3px 0;
+}
+
+.nav-menu {
+    margin-left: auto; /* Pushes the menu to the far right */
+}
+
+.nav-menu ul {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-menu ul li {
+    margin-left: 20px;
+}
+
+.nav-menu ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 7px 0px;
+    border-radius: 5px;
+    font-size: 17px;
+    transition: background-color 0.3s, color 0.3s;
+      text-transform: capitalize; /* Makes only the first letter uppercase */
+}
+
+.nav-menu ul li a:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+
+        .welcome-message {
+            color: #ffffff;
+            background-color: white; /* Vibrant green background */
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 50px auto;
+            max-width: 600px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            opacity: 1;
+            transition: opacity 1s ease-out;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .welcome-message h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+        }
+
+        .welcome-message i {
+            font-size: 2rem;
+            margin-right: 10px;
+            color: #fff;
+        }
+
+        .welcome-message p {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        /* Customize animation */
+        .fade-message {
+            animation: fadeOut 5s forwards; /* Fade out after 5 seconds */
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+    </style>
+</head>
+<body>
+
+ <header class="header-section">
+    <div class="container-fluid d-flex align-items-center">
+        <div class="logo">
+            <a href="./index.html">
+                <img src="{% static 'img/logo.png' %}" alt="Logo">
+            </a>
+        </div>
+        <nav class="nav-menu">
+            <ul class="d-flex">
+               <li class="active"><a href="../photographer_dashboard">Home</a></li>
+                            <li><a href="../show_images">Show Images</a></li>
+                            <li><a href="../upload_image/">Upload Image</a></li>
+                            <li><a href="../add_photographer">Add Details</a></li>
+                            <li><a href="../photographer_aproval/">Bookings</a></li>
+                            <li><a href="../cameraman_profile">Profile</a></li>
+                            <li><a href="../logout">Logout</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<!-- Display message if exists -->
+{% if messages %}
+    <div class="welcome-message fade-message" id="welcome-message">
+        <h1><i class="fa fa-smile-o" aria-hidden="true"></i> </h1>
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    </div>
+{% endif %}
+
+<!-- JavaScript to handle fade-out effect -->
+<script>
+    window.onload = function() {
+        var welcomeMessage = document.getElementById("welcome-message");
+
+        if (welcomeMessage) {
+            // Set a timer to fade out the welcome message after 5 seconds
+            setTimeout(function() {
+                welcomeMessage.style.opacity = 0;
+            }, 5000);
+        }
+    };
+</script>
+
+</body>
+</html>

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="description" content="Phozogy Template">
+    <meta name="keywords" content="Phozogy, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Phozogy | Template</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Quantico:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/elegant-icons.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/slicknav.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+
+    <style>
+        .about-section {
+            display: flex;
+            justify-content: space-between;
+            padding: 60px 0;
+            background-color: #f7f7f7;
+        }
+
+        .about-text {
+            width: 45%;
+            padding: 40px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-text h2 {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .about-text p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .about-text .at-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .al-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .al-pic {
+            width: 60px;
+            height: 60px;
+            margin-right: 15px;
+        }
+
+        .al-pic img {
+            width: 100%;
+            border-radius: 50%;
+        }
+
+        .al-text h5 {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .al-text p {
+            font-size: 14px;
+            color: #777;
+        }
+
+        .about-pic {
+            width: 45%;
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-pic img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-pic:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+
+        .about-pic .overlay-content {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            z-index: 2;
+            color: white;
+        }
+
+        .about-pic .overlay-content h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .about-pic .overlay-content p {
+            font-size: 16px;
+        }
+
+        .about-pic:hover .overlay-content {
+            transform: translateY(-10px);
+            transition: transform 0.3s ease;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 10px 30px;
+            background-color: #ff9f00;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 18px;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-btn:hover {
+            background-color: #ff6f00;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Section Begin -->
+    <header style="background-color: black; color: white;" class="header-section">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12" style="display: flex; align-items: center; justify-content: space-between;">
+                <!-- Logo Section -->
+                <div class="logo">
+                    <a href="./index.html">
+                        <img src="{% static 'img/logo.png' %}" alt="">
+                    </a>
+                </div>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <!-- Navigation Menu -->
+                <nav class="nav-menu mobile-menu">
+                    <ul style="list-style: none; padding: 0; margin: 0; display: flex; justify-content: flex-end; gap: 20px;">
+                        <li>
+                            <a href="../home" style="text-transform: capitalize; color: white;">Home</a>
+                        </li>
+                        <li>
+                            <a href="../about1" style="text-transform: capitalize; color: white;">About</a>
+                        </li>
+                        <li>
+                            <a href="../service1" style="text-transform: capitalize; color: white;">Services</a>
+                        </li>
+                        <li>
+                            <a href="../all_photographers_imagess/" style="text-transform: capitalize; color: white;">Gallary</a>
+                        </li>
+                        <li>
+                            <a href="../login_view" style="text-transform: capitalize; color: white;">login</a>
+                        </li>
+                        <li>
+                            <a href="../reg" style="text-transform: capitalize; color: white;">sign up</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+    <!-- About Section Begin -->
+    <!-- About Section Begin -->
+    <section class="about-section">
+        <div class="about-text">
+            <h2>Capturing Moments That Matter</h2>
+            <p>We specialize in capturing your most treasured memories with professionalism and attention to detail. Our team is dedicated to delivering high-quality imagery that tells your unique story. Whether it’s a wedding, corporate event, or personal session, we aim to provide an unforgettable experience.</p>
+            <div class="at-list">
+                <div class="al-item">
+                    <div class="al-pic">
+                        <img src="{% static 'img/about/list-1.png' %}" alt="Professionalism">
+                    </div>
+                    <div class="al-text">
+                        <h5>Professionalism</h5>
+                        <p>Our team ensures top-tier service with a focus on quality and client satisfaction. Every moment matters to us.</p>
+                    </div>
+                </div>
+                <div class="al-item">
+                    <div class="al-pic">
+                        <img src="{% static 'img/about/list-2.png' %}" alt="Individual Approach">
+                    </div>
+                    <div class="al-text">
+                        <h5>Individual Approach</h5>
+                        <p>We understand each client has unique needs and tailor our services to suit them, ensuring a personalized experience.</p>
+                    </div>
+                </div>
+                <div class="al-item">
+                    <div class="al-pic">
+                        <img src="{% static 'img/about/list-3.png' %}" alt="Flexible Schedule">
+                    </div>
+                    <div class="al-text">
+                        <h5>Flexible Schedule</h5>
+                        <p>We offer flexible scheduling to ensure we can accommodate your needs at the most convenient times.</p>
+                    </div>
+                </div>
+            </div>
+            <a href="#" class="cta-btn">Book an Appointment</a>
+        </div>
+        <div class="about-pic">
+            <img src="{% static 'img/about/about-pic.jpg' %}" alt="Professional Photographer">
+            <div class="overlay-content">
+                <h3>Bringing Your Vision to Life</h3>
+                <p>Our team of professionals is committed to capturing every detail, ensuring your moments are preserved for a lifetime.</p>
+            </div>
+        </div>
+    </section>
+    <!-- About Section End -->
+</body>
+
+</html>
+
+

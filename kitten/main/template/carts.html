@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>cart</title>
+    {% load static%}
+    <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>ELEMENTS</title>
+
+  <!-- slider stylesheet -->
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css'%}" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,700|Roboto:400,700&display=swap" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="{% static 'css/new.css'%}" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="{% static 'css/responsive.css'%}" rel="stylesheet" />
+</head>
+<body>
+<body class="sub_page">
+  <div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <a class="navbar-brand" href="index">
+            <img src="{% static 'images/logo.png'%}" alt="">
+            <span>
+              ELEMENTS
+            </span>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="d-flex mx-auto flex-column flex-lg-row align-items-center">
+              <ul class="navbar-nav  ">
+                <li class="nav-item active">
+                  <a class="nav-link" href="userhome">Home <span class="sr-only">(current)</span></a>
+                </li>
+                  <li class="nav-item">
+                  <a class="nav-link" href="viewproduct">products</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="">wishlist</a>
+                </li>
+<!--                  <li class="nav-item">-->
+<!--                  <a class="nav-link" href="">order now</a>-->
+<!--                </li>-->
+              </ul>
+            </div>
+            <div class="quote_btn-container  d-flex justify-content-center">
+              <a href="">
+                <img src="{% static 'images/call.png'%}" alt="">
+                CALL : +01 1234567890
+              </a>
+              <a href="">
+                <span>
+                  @
+                </span>
+                demo@gmail.com
+              </a>
+                <br>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- end header section -->
+  </div>
+  <br>
+   <br>
+   <br>
+   <br>
+ <table class="table table-dark">
+                        <tr>
+                           <th>product name</th>
+                           <th>price</th>
+                           <th> quantity</th>
+
+                           <th>image</th>
+
+                        </tr>
+                        {% for i in data %}
+                        <tr>
+                           <td>{{i.product_id.productname}}</td>
+                            <td>{{i.product_id.productprice}}</td>
+                            <td><a href="decrement/{{i.pk}}"><img src="{% static '/images/remove.png' %}" width="20px"> </a>{{i.quantity}} <a href="increment/{{i.pk}}"><img src="{% static '/images/plus.png' %}" width="20px"></a></td>
+                             <td> <img src="{{i.product_id.image.url}}" alt="not found" width="50px"></td>
+
+                           <td>
+                              {% for j in price %}
+                           {% if i.product_id == j.product %}
+                           {{j.total_price}}
+                           {% endif%}
+                           {% endfor %}
+                          </td>
+
+
+
+                        </tr>
+                        {% endfor %}
+                     </table>
+  <div>
+                        <h2> TOTAL PRICE : {{total_price}}</h2>
+                         <h2> COUNT :{{ count}} </h2>
+                        <a  href="payment/{{total_price}}" class="btn btn-success">procced to check out</a>
+  </div>
+  <section class="contact_section layout_padding">
+    <div class="container">
+      <div class="d-flex flex-column align-items-end">
+        <div class="custom_heading-container">
+          <hr>
+          <h2>
+            Do you like it..
+          </h2>
+        </div>
+      </div>
+  </section>
+
+
+  <!-- end contact section -->
+
+  <!-- info section -->
+  <section class="info_section layout_padding">
+    <div class="container">
+      <div class="info_social">
+        <div>
+          <a href="">
+            <img src="{% static 'images/fb.png'%}" alt="">
+          </a>
+        </div>
+        <div>
+          <a href="">
+            <img src="{% static 'images/twitter.png'%}" alt="">
+          </a>
+        </div>
+        <div>
+          <a href="">
+            <img src="{% static 'images/linkedin.png'%}" alt="">
+          </a>
+        </div>
+        <div>
+          <a href="">
+            <img src="{% static 'images/insta.png'%}" alt="">
+          </a>
+        </div>
+      </div>
+      <div>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- end info_section -->
+
+  <!-- footer section -->
+  <section class="container-fluid footer_section">
+    <p>
+      &copy; 2019 All Rights Reserved By
+      <a href="https://html.design/">Free Html Templates</a>
+    </p>
+  </section>
+  <!-- footer section -->
+
+  <script type="text/javascript" src="{% static 'js/jquery-3.4.1.min.js'%}"></script>
+  <script type="text/javascript" src="{% static 'js/bootstrap.js'%}"></script>
+
+
+</body>
+</html>

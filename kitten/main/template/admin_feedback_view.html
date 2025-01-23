@@ -1,0 +1,219 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url("{% static 'img/hero/photographer.jpg' %}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+        }
+
+        .header-section {
+            background-color: rgba(0, 0, 0, 0.85); /* Increased opacity for better contrast */
+            color: white;
+            padding: 24px 0;
+        }
+
+        .logo img {
+            max-height: 50px;
+        }
+
+        .nav-menu {
+            flex-grow: 1;
+        }
+
+        .nav-menu ul {
+            list-style: none;
+            display: flex;
+            justify-content: flex-end; /* Align menu items to the right */
+            padding: 1;
+            margin: 0;
+        }
+
+        .nav-menu ul li {
+            margin-left: 20px;
+        }
+
+        .nav-menu ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 24px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+            text-transform: capitalize; /* Makes only the first letter uppercase */
+        }
+
+        .nav-menu ul li a:hover {
+            background-color: #4CAF50; /* Green highlight */
+            color: white;
+        }
+
+        /* Smaller container */
+        .container {
+            width: 80%; /* Reduced the container width */
+            max-width: 1200px; /* Set a maximum width for larger screens */
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px; /* Adjusted padding */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 0 auto; /* Center the container */
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #696969;
+            color: white;
+        }
+
+        td {
+            background-color: #f9f9f9;
+        }
+
+        .rating {
+            color: #FFD700;
+            font-size: 20px;
+        }
+
+        .action-buttons a {
+            margin: 0 5px;
+            padding: 5px 10px;
+            background-color: red;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .action-buttons a:hover {
+            background-color: #0056b3;
+        }
+        .notification-icon {
+            position: relative;
+            color: white;
+            font-size: 18px;
+            text-decoration: none;
+            padding: 8px 10px;
+            transition: color 0.3s;
+        }
+
+        .notification-icon:hover {
+            color: #4CAF50; /* Green highlight */
+        }
+
+        .notification-icon .fa-bell {
+            font-size: 20px;
+        }
+
+        .notification-icon .badge {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: red;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 2px 6px;
+            border-radius: 50%;
+            transform: translate(50%, -50%);
+        }
+
+    </style>
+</head>
+<body>
+<header class="header-section">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 d-flex align-items-center">
+                <div class="logo">
+                    <a href="./index.html">
+                        <img src="{% static 'img/logo.png' %}" alt="Logo">
+                    </a>
+                </div>
+                <nav class="nav-menu">
+                    <ul class="d-flex">
+                        <li class="active"><a href="../admin_dashboard">Home</a></li>
+                        <li><a href="../admin_view_photographer">Photographers</a></li>
+                        <li><a href="../view_user">Users</a></li>
+                        <li><a href="../accept_booking">Approve booking</a></li>
+                        <li>  <a href="{% url 'admin_notification' %}" class="notification-icon">
+    <i class="fa fa-bell"></i>
+    {% if unread_count > 0 %}
+        <span class="badge">{{ unread_count }}</span>
+    {% endif %}
+</a></li>
+                        <li><a href="../admin_feedback_view">Feedbacks</a></li>
+                        <li class="nav-item"><a href="../logout">Logout</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Feedbacks Section -->
+<br><br>
+<div class="container">
+    <h1>Feedbacks</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Photographer</th>
+                <th>Rating</th>
+                <th>Review</th>
+                <th>Created At</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for feedback in feedbacks %}
+            <tr>
+                <td>{{ feedback.user.username }}</td>
+                <td class="rating">{{ feedback.rating }} ★</td>
+                <td>{{ feedback.review }}</td>
+                <td>{{ feedback.created_at }}</td>
+                <td class="action-buttons">
+                   <a href="{% url 'delete_feedback' feedback.id %}">Delete</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6">No feedbacks available.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,324 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    {% load static %}-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Payment</title>-->
+<!--    <style>-->
+<!--        body {-->
+<!--            font-family: 'Open Sans', sans-serif;-->
+<!--            margin: 0;-->
+<!--            padding: 0;-->
+<!--            background-image: url("{% static 'img/hero/photographer.jpg' %}");-->
+<!--            background-size: cover;-->
+<!--            background-repeat: no-repeat;-->
+<!--            background-attachment: fixed;-->
+<!--            background-position: center;-->
+<!--            min-height: 100vh;-->
+<!--            display: flex;-->
+<!--            flex-direction: column;-->
+
+<!--        }-->
+<!--         .header-section {-->
+<!--    background-color: rgba(0, 0, 0, 0.85);-->
+<!--    color: white;-->
+<!--    padding: 30px 0;-->
+<!--}-->
+
+<!--.nav-menu {-->
+<!--    margin-left: auto; /* Pushes the menu to the far right */-->
+<!--}-->
+
+<!--.nav-menu ul {-->
+<!--    list-style: none;-->
+<!--    display: flex;-->
+<!--    padding: 0;-->
+<!--    margin: 0;-->
+<!--}-->
+
+<!--.nav-menu ul li {-->
+<!--    margin-left: 20px;-->
+<!--}-->
+
+<!--.nav-menu ul li a {-->
+<!--    color: white;-->
+<!--    text-decoration: none;-->
+<!--    font-weight: bold;-->
+<!--    padding: 7px 15px;-->
+<!--    border-radius: 5px;-->
+<!--    font-size: 17px;-->
+<!--    transition: background-color 0.3s, color 0.3s;-->
+<!--      text-transform: capitalize; /* Makes only the first letter uppercase */-->
+<!--}-->
+
+<!--.nav-menu ul li a:hover {-->
+<!--    background-color: #4CAF50;-->
+<!--    color: white;-->
+<!--}-->
+
+
+<!--         .container {-->
+<!--            max-width: 900px;-->
+<!--            margin: 60px auto;-->
+<!--            padding: 40px;-->
+<!--            background-color: #fff;-->
+<!--            border-radius: 10px;-->
+<!--            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<header class="header-section">-->
+<!--    <div class="container-fluid d-flex align-items-center">-->
+<!--        <div class="logo">-->
+<!--            <a href="./index.html">-->
+<!--                <img src="{% static 'img/logo.png' %}" alt="Logo">-->
+<!--            </a>-->
+<!--        </div>-->
+<!--        <nav class="nav-menu">-->
+<!--            <ul class="d-flex">-->
+<!--               <li><a href="../user_dashboard">Home</a></li>-->
+<!--                        <li><a href="../about">About</a></li>-->
+<!--                        <li><a href="../service">Services</a></li>-->
+<!--&lt;!&ndash;                        <li><a href="viewproduct">Accessories</a></li>&ndash;&gt;-->
+<!--                        <li><a href="../show_photographer">Photographers</a></li>-->
+<!--                        <li><a href="../user_profile/">Profile</a></li>-->
+<!--                        <li><a href="../logout">Logout</a></li>-->
+<!--            </ul>-->
+<!--        </nav>-->
+<!--    </div>-->
+<!--</header>-->
+<!-- <div class="container">-->
+
+<!--        <p class="sub-header">Thank you ! Your booking details are below:</p>-->
+
+<!--        <div class="details">-->
+<!--            <div>-->
+<!--&lt;!&ndash;                <p><strong>Photographer:</strong> {{ booking.photographer_data.username }}</p>&ndash;&gt;-->
+<!--                <p><strong>Customer:</strong> {{ booking.user.username }}</p>-->
+<!--                <p><strong>Event Date:</strong> {{ booking.event_date }}</p>-->
+<!--                <p><strong>Event Type:</strong> {{ booking.event_type }}</p>-->
+<!--                <p><strong>Location:</strong> {{ booking.event_location }}</p>-->
+<!--                <p><strong>Additional Notes:</strong> {{ booking.additional_notes }}</p>-->
+<!--            </div>-->
+<!--            <div>-->
+<!--                <p><strong>Duration:</strong> {{ booking.hours_needed }} hours</p>-->
+<!--                <p><strong>Amount:</strong> ₹{{ booking.total_cost }}</p>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--     <div>-->
+<!--<form action="/success" method="POST">-->
+<!--    {% csrf_token %}-->
+<!--    <script-->
+<!--        src="https://checkout.razorpay.com/v1/checkout.js"-->
+<!--        data-key="rzp_test_SROSnyInFv81S4"-->
+<!--        data-amount="{{ amount }}"-->
+<!--        data-currency="INR"-->
+<!--        data-order_id="{{ payment.id }}"-->
+<!--        data-buttontext="Pay with Razorpay"-->
+<!--        data-name="photographer Payment"-->
+<!--        data-description="Book photographer Service"-->
+<!--        data-image="https://example.com/your_logo.jpg"-->
+<!--        data-prefill.name="Your Name"-->
+<!--        data-prefill.email="user@example.com"-->
+<!--        data-theme.color="#F37254"-->
+<!--     ></script>-->
+<!--    <input type="hidden" custom="Hidden Element" name="hidden">-->
+<!--</form>-->
+<!--          </div>-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>Payment</title>
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url("{% static 'img/hero/photographer.jpg' %}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .header-section {
+            background-color: rgba(0, 0, 0, 0.85);
+            color: white;
+            padding: 19px 1px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between; /* Aligns logo and nav menu to the ends */
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo img {
+            height: 50px;
+        }
+
+        .nav-menu {
+            margin: 0;
+        }
+
+        .nav-menu ul {
+            list-style: none;
+            display: flex;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-menu ul li {
+            margin-left: 20px;
+        }
+
+        .nav-menu ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 14px;
+            border-radius: 5px;
+            font-size: 17px;
+            transition: background-color 0.3s, color 0.3s;
+            text-transform: capitalize;
+        }
+
+        .nav-menu ul li a:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        /* To prevent content overlap due to fixed header */
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 40px;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+         @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .sub-header {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .details {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding: 6 10px;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 20px;
+        }
+
+        .details p {
+            margin: 10px 0;
+            font-size: 16px;
+            color: #555;
+        }
+
+        .details div {
+            width: 48%; /* Ensures the two blocks are evenly spaced */
+        }
+
+        .razorpay-button {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .razorpay-button script {
+            margin-top: 20px;
+        }
+
+        /* Optional: Add some hover effects on the container */
+        .container:hover {
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+<header class="header-section">
+    <div class="logo">
+        <a href="./index.html">
+            <img src="{% static 'img/logo.png' %}" alt="Logo">
+        </a>
+    </div>
+    <nav class="nav-menu">
+        <ul>
+            <li><a href="../user_dashboard">Home</a></li>
+            <li><a href="../about">About</a></li>
+            <li><a href="../service">Services</a></li>
+            <li><a href="../show_photographer">Photographers</a></li>
+            <li><a href="../user_profile/">Profile</a></li>
+            <li><a href="../logout">Logout</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="container">
+    <p class="sub-header">Thank you! Your booking details are below:</p>
+    <div class="details">
+        <div>
+            <p><strong>Customer:</strong> {{ booking.user.username }}</p>
+            <p><strong>Event Date:</strong> {{ booking.event_date }}</p>
+            <p><strong>Event Type:</strong> {{ booking.event_type }}</p>
+            <p><strong>Location:</strong> {{ booking.event_location }}</p>
+            <p><strong>Additional Notes:</strong> {{ booking.additional_notes }}</p>
+        </div>
+        <div>
+            <p><strong>Duration:</strong> {{ booking.hours_needed }} hours</p>
+            <p><strong>Amount:</strong> ₹{{ booking.total_cost }}</p>
+        </div>
+    </div>
+   <center><form action="/success" method="POST" class="razorpay-button">
+        {% csrf_token %}
+        <script
+            src="https://checkout.razorpay.com/v1/checkout.js"
+            data-key="rzp_test_SROSnyInFv81S4"
+            data-amount="{{ amount }}"
+            data-currency="INR"
+            data-order_id="{{ payment.id }}"
+            data-buttontext="Pay with Razorpay"
+            data-name="Photographer Payment"
+            data-description="Book photographer Service"
+            data-image="https://example.com/your_logo.jpg"
+            data-prefill.name="Your Name"
+            data-prefill.email="user@example.com"
+            data-theme.color="#F37254"
+        ></script>
+        <input type="hidden" custom="Hidden Element" name="hidden">
+   </form></center>
+</div>
+</body>
+</html>

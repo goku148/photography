@@ -1,0 +1,454 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    {% load static %}-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="description" content="Phozogy Template">-->
+<!--    <meta name="keywords" content="Phozogy, unica, creative, html">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+<!--    <title>Phozogy | Template</title>-->
+
+<!--    &lt;!&ndash; Google Font &ndash;&gt;-->
+<!--    <link href="https://fonts.googleapis.com/css?family=Quantico:400,700&display=swap" rel="stylesheet">-->
+<!--    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap" rel="stylesheet">-->
+
+<!--    &lt;!&ndash; Css Styles &ndash;&gt;-->
+<!--    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">-->
+<!--    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" type="text/css">-->
+<!--    <link rel="stylesheet" href="{% static 'css/elegant-icons.css' %}" type="text/css">-->
+<!--    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" type="text/css">-->
+<!--    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}" type="text/css">-->
+<!--    <link rel="stylesheet" href="{% static 'css/slicknav.min.css' %}" type="text/css">-->
+<!--    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">-->
+
+<!--    <style>-->
+<!--        body {-->
+<!--            font-family: 'Open Sans', sans-serif;-->
+<!--            margin: 0;-->
+<!--            padding: 0;-->
+<!--            background-image: url("{% static 'img/hero/photographer.jpg' %}");-->
+<!--            background-size: cover;-->
+<!--            background-repeat: no-repeat;-->
+<!--            background-attachment: fixed;-->
+<!--            background-position: center;-->
+<!--            color: white; /* Set text color to contrast with the background */-->
+<!--        }-->
+
+<!--        main {-->
+<!--            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background for content */-->
+<!--            border-radius: 15px;-->
+<!--            padding: 20px;-->
+<!--            margin: 20px auto;-->
+<!--            max-width: 800px; /* Center and constrain the content width */-->
+<!--            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);-->
+<!--        }-->
+
+<!--        .header-section {-->
+<!--            background-color: rgba(0, 0, 0, 0.85); /* Increased opacity for better contrast */-->
+<!--            color: white;-->
+<!--            padding: 5px 0;-->
+<!--        }-->
+
+<!--        .logo img {-->
+<!--            max-height: 50px;-->
+<!--        }-->
+
+<!--        .nav-menu {-->
+<!--            flex-grow: 1;-->
+<!--        }-->
+
+<!--        .nav-menu ul {-->
+<!--            list-style: none;-->
+<!--            display: flex;-->
+<!--            justify-content: flex-end; /* Align menu items to the right */-->
+<!--            padding: 0;-->
+<!--            margin: 0;-->
+<!--        }-->
+
+<!--        .nav-menu ul li {-->
+<!--            margin-left: 20px;-->
+<!--        }-->
+
+<!--        .nav-menu ul li a {-->
+<!--            color: white;-->
+<!--            text-decoration: none;-->
+<!--            font-weight: bold;-->
+<!--            padding: 8px 12px;-->
+<!--            border-radius: 5px;-->
+<!--            transition: background-color 0.3s, color 0.3s;-->
+<!--            text-transform: capitalize; /* Makes only the first letter uppercase */-->
+<!--        }-->
+
+<!--        .nav-menu ul li a:hover {-->
+<!--            background-color: #4CAF50; /* Green highlight */-->
+<!--            color: white;-->
+<!--        }-->
+<!--        h1 {-->
+<!--            text-align: center;-->
+<!--            margin-top: 5px;-->
+<!--            font-size: 40px;-->
+<!--            color: black;-->
+<!--        }-->
+
+<!--        form {-->
+<!--            background: white;-->
+<!--            padding: 30px;-->
+<!--            border-radius: 15px;-->
+<!--            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);-->
+<!--        }-->
+
+<!--        label {-->
+<!--            display: block;-->
+<!--            margin-bottom: 8px;-->
+<!--            font-weight: bold;-->
+<!--            color: #333;-->
+<!--        }-->
+
+<!--        input[type="text"],-->
+<!--        input[type="email"],-->
+<!--        input[type="number"] {-->
+<!--            width: 100%;-->
+<!--            padding: 10px;-->
+<!--            margin-bottom: 15px;-->
+<!--            border: 1px solid #ccc;-->
+<!--            border-radius: 5px;-->
+<!--            font-size: 14px;-->
+<!--            transition: border-color 0.3s;-->
+<!--        }-->
+
+<!--        input[type="text"]:focus,-->
+<!--        input[type="email"]:focus,-->
+<!--        input[type="number"]:focus {-->
+<!--            border-color: #4CAF50; /* Change border color on focus */-->
+<!--            outline: none;-->
+<!--        }-->
+
+<!--        button {-->
+<!--            display: block;-->
+<!--            width: 100%;-->
+<!--            padding: 10px;-->
+<!--            background-color: black;-->
+<!--            color: white;-->
+<!--            font-size: 16px;-->
+<!--            font-weight: bold;-->
+<!--            border: none;-->
+<!--            border-radius: 5px;-->
+<!--            cursor: pointer;-->
+<!--            transition: background-color 0.3s;-->
+<!--        }-->
+
+<!--        button:hover {-->
+<!--            background-color: grey;-->
+<!--        }-->
+
+<!--        .container {-->
+<!--            text-align: center;-->
+<!--            margin-top: 20px;-->
+<!--        }-->
+
+<!--        .container a {-->
+<!--            text-decoration: none;-->
+<!--            color: black;-->
+<!--            font-weight: bold;-->
+<!--        }-->
+
+<!--        .container a:hover {-->
+<!--            color: black;-->
+<!--            text-decoration: underline;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--    -->
+<!--&lt;!&ndash;</header>&ndash;&gt;-->
+<!--<header class="header-section">-->
+<!--    <div class="container-fluid">-->
+<!--        <div class="row">-->
+<!--            <div class="col-lg-12 d-flex align-items-center">-->
+<!--                <div class="logo">-->
+<!--                    <a href="./index.html">-->
+<!--                        <img src="{% static 'img/logo.png' %}" alt="Logo">click-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--                <nav class="nav-menu">-->
+<!--                    <ul class="d-flex">-->
+<!--                        <li><a href="../user_dashboard">Home</a></li>-->
+<!--                        <li><a href="../about">About</a></li>-->
+<!--                        <li><a href="../service">Services</a></li>-->
+<!--&lt;!&ndash;                        <li><a href="viewproduct">Accessories</a></li>&ndash;&gt;-->
+<!--                        <li><a href="../show_photographer">Photographers</a></li>-->
+<!--                        <li><a href="../user_profile/">Profile</a></li>-->
+<!--                        <li><a href="../logout">Logout</a></li>-->
+<!--                    </ul>-->
+<!--                </nav>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</header>-->
+
+<!--<main>-->
+
+<!--    <form action="" method="post" enctype="multipart/form-data">-->
+<!--        {% csrf_token %}-->
+
+<!--         <div class="heading-box">-->
+<!--        <h1 style="color:black;">USER DETAILS</h1>-->
+<!--    </div>-->
+
+
+<!--        <label for="fullname">Full Name:</label>-->
+<!--        <input type="text" id="fullname" name="fullname" value="{{ user.fullname }}" required>-->
+
+<!--        <label for="username">Username:</label>-->
+<!--        <input type="text" id="username" name="username" value="{{ user.username }}" required>-->
+
+<!--        <label for="email">Email Id:</label>-->
+<!--        <input type="email" id="email" name="email" value="{{ user.email }}" required>-->
+
+<!--        <label for="phn">Phone Number:</label>-->
+<!--        <input type="number" id="phn" name="phn" value="{{ user.phonenumber }}" required>-->
+
+<!--        <button type="submit">Update</button>-->
+<!--    </form>-->
+
+<!--    <div class="container">-->
+<!--        <a href="../user_profile">Back to Profile</a>-->
+<!--    </div>-->
+<!--</main>-->
+
+<!--</body>-->
+<!--</html>-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="description" content="Phozogy Template">
+    <meta name="keywords" content="Phozogy, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Phozogy | Template</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Quantico:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/elegant-icons.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/slicknav.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+
+    <style>
+        /* General Body Styling */
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url("{% static 'img/hero/photographer.jpg' %}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            color: white; /* Set text color to contrast with the background */
+        }
+
+        /* Header Section Styling */
+        .header-section {
+            background-color: rgba(0, 0, 0, 0.85); /* Increased opacity for better contrast */
+            color: white;
+            padding: 20px 0;
+        }
+
+        .logo img {
+            max-height: 50px;
+        }
+
+        .nav-menu {
+            flex-grow: 1;
+        }
+
+        .nav-menu ul {
+            list-style: none;
+            display: flex;
+            justify-content: flex-end; /* Align menu items to the right */
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-menu ul li {
+            margin-left: 20px;
+        }
+
+        .nav-menu ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+            text-transform: capitalize;
+        }
+
+        .nav-menu ul li a:hover {
+            background-color: #4CAF50; /* Green highlight */
+            color: white;
+        }
+
+        /* Main Content Area Styling */
+        main {
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background for content */
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 550px; /* Center and constrain the content width */
+            box-shadow: 0 4px 10px rgba(8, 5, 0, 0.7);
+        }
+
+        /* Heading Styling */
+        h1 {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 32px;
+            color: black;
+        }
+
+        /* Form Styling */
+        form {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="number"]:focus {
+            border-color: #4CAF50; /* Green border color on focus */
+            outline: none;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: black;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: grey; /* Grey background on hover */
+        }
+
+        .container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .container a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+        }
+
+        .container a:hover {
+            color: black;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header Section -->
+    <header class="header-section">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 d-flex align-items-center">
+                    <div class="logo">
+                        <a href="./index.html">
+                            <img src="{% static 'img/logo.png' %}" alt="Logo">click
+                        </a>
+                    </div>
+                    <nav class="nav-menu">
+                        <ul class="d-flex">
+                            <li><a href="../user_dashboard">Home</a></li>
+                        <li><a href="../about">About</a></li>
+                        <li><a href="../service">Services</a></li>
+                        <li> <a href="{% url 'all_photographers_images' %}">gallary</a></li>
+<!--                        <li><a href="viewproduct">Accessories</a></li>-->
+                        <li><a href="../show_photographer">Photographers</a></li>
+                        <li><a href="../user_profile/">Profile</a></li>
+                        <li> <a class="nav-link" href="{% url 'submit_feedback' %}">Feedback</a></li>
+                        <li><a href="../logout">Logout</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Section with Form -->
+    <main>
+
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="heading-box">
+                <h1>USER DETAILS</h1>
+            </div>
+
+            <label for="fullname">Full Name:</label>
+            <input type="text" id="fullname" name="fullname" value="{{ user.fullname }}" required>
+
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" value="{{ user.username }}" required>
+
+            <label for="email">Email Id:</label>
+            <input type="email" id="email" name="email" value="{{ user.email }}" required>
+
+            <label for="phn">Phone Number:</label>
+            <input type="number" id="phn" name="phn" value="{{ user.phonenumber }}" required>
+
+            <button type="submit">Update</button>
+        </form>
+
+        <div class="container">
+            <a href="../user_profile">Back to Profile</a>
+        </div>
+    </main>
+
+</body>
+
+</html>

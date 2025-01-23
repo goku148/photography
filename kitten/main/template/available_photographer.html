@@ -1,0 +1,190 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phozogy | Template</title>
+
+     <link href="https://fonts.googleapis.com/css?family=Quantico:400,700&display=swap" rel="stylesheet">
+
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/elegant-icons.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/slicknav.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url("{% static 'img/hero/photographer.jpg' %}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+      .header-section {
+    background-color: rgba(0, 0, 0, 0.85);
+    color: white;
+    padding: 3px 0;
+}
+
+.nav-menu {
+    margin-left: auto; /* Pushes the menu to the far right */
+}
+
+.nav-menu ul {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-menu ul li {
+    margin-left: 20px;
+}
+
+.nav-menu ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 7px 0px;
+    border-radius: 5px;
+    font-size: 17px;
+    transition: background-color 0.3s, color 0.3s;
+      text-transform: capitalize; /* Makes only the first letter uppercase */
+}
+
+.nav-menu ul li a:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+
+        .container {
+            margin-top: 50px;
+        }
+
+
+       /* Card Styling */
+.card {
+    position: relative;
+    overflow: visible;
+    border-radius: 15px;
+    padding-top: 60px; /* Space for profile picture */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 50px; /* Add vertical spacing */
+    transition: box-shadow 0.3s ease;
+}
+
+
+        .card:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Profile Picture Styling */
+        .profile-picture {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 4px solid white;
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            object-fit: cover;
+            cursor: pointer; /* Indicate clickable */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Pop-up Effect */
+        .profile-picture.pop-up {
+            z-index: 10; /* Bring to the front */
+            transform: scale(2.5) translateY(20px); /* Enlarge the image */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-body {
+            text-align: center;
+            padding-top: 40px;
+        }
+    </style>
+</head>
+<body>
+ <header class="header-section">
+    <div class="container-fluid d-flex align-items-center">
+        <div class="logo">
+            <a href="./index.html">
+                <img src="{% static 'img/logo.png' %}" alt="Logo">
+            </a>
+        </div>
+        <nav class="nav-menu">
+            <ul class="d-flex">
+               <li><a href="user_dashboard">Home</a></li>
+                        <li><a href="about">About</a></li>
+                        <li><a href="service">Services</a></li>
+                     <li> <a href="{% url 'all_photographers_images' %}">gallary</a></li>
+<!--                        <li><a href="viewproduct">Accessories</a></li>-->
+                        <li><a href="show_photographer">Photographers</a></li>
+                        <li><a href="user_profile/">Profile</a></li>
+                        <li> <a class="nav-link" href="{% url 'submit_feedback' %}">Feedback</a></li>
+                        <li><a href="logout">Logout</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+  <div class="container">
+    <div class="row gx-4 gy-5"> <!-- Add gy-5 for vertical gap -->
+        {% for photographer in photographers %}
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <!-- Profile Picture -->
+                <img src="{% if photographer.user.profile_picture %}{{ photographer.user.profile_picture.url }}{% else %}{% static 'images/default-profile.png' %}{% endif %}" alt="Profile Picture" class="profile-picture">
+                <!-- Card Body -->
+                <div class="card-body">
+                    <h5 class="card-title">{{ photographer.user.fullname }}</h5>
+                    <p class="card-text">Specialization: {{ photographer.specialization }}</p>
+                    <p class="card-text">Location: {{ photographer.location }}</p>
+<!--                    <p class="card-text">Experience: {{ photographer.user.experience }}</p>-->
+                    <p class="card-text">hourly rate: {{ photographer.hourly_rate }} </p>
+<!--                    <p class="card-text">Starting Price: ${{ photographers.price }}</p>-->
+                    <p class="card-text">
+<!--                        <span class="badge {% if photographer.availability %}bg-success{% else %}bg-danger{% endif %}">-->
+<!--                            {% if photographer.availability %}Available{% else %}Not Available{% endif %}-->
+<!--                        </span>-->
+                    </p>
+                    <a href="view_portfolio/{{photographer.pk}}" class="btn btn-primary" target="_blank">recent works</a>
+<!--                    <a href="uregister/{{ photographer.hourly_rate}}" class="btn btn-success">Book Now</a>-->
+                    <a href="{% url 'uregister' photographer.hourly_rate photographer.id %}" class="btn btn-success">Book Now</a>
+
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p>No photographers available at the moment.</p>
+        {% endfor %}
+    </div>
+</div>
+
+    <!-- JavaScript -->
+    <script>
+        function togglePopUp(image) {
+            image.classList.toggle('pop-up');
+        }
+    </script>
+</body>
+</html>

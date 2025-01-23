@@ -1,0 +1,460 @@
+
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+
+<!--<head>-->
+<!--    {% load static %}-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Admin Dashboard - Pending Bookings</title>-->
+<!--    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">-->
+<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">-->
+<!--    <style>-->
+<!--        body {-->
+<!--            font-family: Arial, sans-serif;-->
+<!--            margin: 0;-->
+<!--            padding: 0;-->
+<!--            background-image: url("{% static 'img/hero/photographer.jpg' %}");-->
+<!--            background-size: cover;-->
+<!--            background-repeat: no-repeat;-->
+<!--            background-attachment: fixed;-->
+<!--            background-position: center;-->
+<!--            color: white;-->
+<!--        }-->
+
+<!--        .header-section {-->
+<!--            background-color: rgba(0, 0, 0, 0.85);-->
+<!--            color: white;-->
+<!--            padding: 33px 0;-->
+<!--        }-->
+
+<!--        .nav-menu {-->
+<!--            margin-left: auto;-->
+<!--        }-->
+
+<!--        .nav-menu ul {-->
+<!--            list-style: none;-->
+<!--            display: flex;-->
+<!--            padding: 0;-->
+<!--            margin: 0;-->
+<!--        }-->
+
+<!--        .nav-menu ul li {-->
+<!--            margin-left: 20px;-->
+<!--        }-->
+
+<!--        .nav-menu ul li a {-->
+<!--            color: white;-->
+<!--            text-decoration: none;-->
+<!--            font-weight: bold;-->
+<!--            padding: 7px 13px;-->
+<!--            border-radius: 5px;-->
+<!--            font-size: 17px;-->
+<!--            transition: background-color 0.3s, color 0.3s;-->
+<!--            text-transform: capitalize;-->
+<!--        }-->
+
+<!--        .nav-menu ul li a:hover {-->
+<!--            background-color: #4CAF50;-->
+<!--            color: white;-->
+<!--        }-->
+
+<!--        .notification-icon {-->
+<!--            position: relative;-->
+<!--            color: white;-->
+<!--            font-size: 18px;-->
+<!--            text-decoration: none;-->
+<!--            padding: 8px 10px;-->
+<!--            transition: color 0.3s;-->
+<!--        }-->
+
+<!--        .notification-icon:hover {-->
+<!--            color: #4CAF50;-->
+<!--        }-->
+
+<!--        .notification-icon .fa-bell {-->
+<!--            font-size: 20px;-->
+<!--        }-->
+
+<!--        .notification-icon .badge {-->
+<!--            position: absolute;-->
+<!--            top: 0;-->
+<!--            right: 0;-->
+<!--            background-color: red;-->
+<!--            color: white;-->
+<!--            font-size: 12px;-->
+<!--            font-weight: bold;-->
+<!--            padding: 2px 6px;-->
+<!--            border-radius: 50%;-->
+<!--            transform: translate(50%, -50%);-->
+<!--        }-->
+
+<!--        .container {-->
+<!--            margin-top: 30px;-->
+<!--            background-color: rgba(255, 255, 255, 0.9);-->
+<!--            padding: 20px;-->
+<!--            border-radius: 10px;-->
+<!--            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);-->
+<!--            color: #333;-->
+<!--        }-->
+
+<!--        h2 {-->
+<!--            color: #333;-->
+<!--        }-->
+
+<!--        .table th,-->
+<!--        .table td {-->
+<!--            vertical-align: middle;-->
+<!--        }-->
+
+<!--        .btn-disabled {-->
+<!--            cursor: not-allowed;-->
+<!--        }-->
+
+<!--        .text-muted {-->
+<!--            color: #666;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+
+<!--<body>-->
+<!--    <header class="header-section">-->
+<!--        <div class="container-fluid d-flex align-items-center">-->
+<!--            <div class="logo">-->
+<!--                <a href="./index.html">-->
+<!--                    <img src="{% static 'img/logo.png' %}" alt="Logo">-->
+<!--                </a>-->
+<!--            </div>-->
+<!--            <nav class="nav-menu">-->
+<!--                <ul class="d-flex">-->
+<!--                    <li class="active"><a href="admin_dashboard">Home</a></li>-->
+<!--                    <li><a href="admin_view_photographer">Photographers</a></li>-->
+<!--                    <li><a href="view_user">Users</a></li>-->
+<!--                    <li><a href="accept_booking">Accept Booking</a></li>-->
+<!--                    <li>-->
+<!--                        <a href="{% url 'admin_notification' %}" class="notification-icon">-->
+<!--                            <i class="fa fa-bell"></i>-->
+<!--                            {% if unread_count > 0 %}-->
+<!--                                <span class="badge">{{ unread_count }}</span>-->
+<!--                            {% endif %}-->
+<!--                        </a>-->
+<!--                    </li>-->
+<!--                    <li><a href="../admin_feedback_view">Feedbacks</a></li>-->
+<!--                    <li><a href="logout">Logout</a></li>-->
+<!--                </ul>-->
+<!--            </nav>-->
+<!--        </div>-->
+<!--    </header>-->
+
+<!--    &lt;!&ndash; Pending Bookings &ndash;&gt;-->
+<!--    <div class="container">-->
+<!--        <h2 class="text-center mb-4">Pending Bookings</h2>-->
+<!--        {% if pending_bookings %}-->
+<!--        <table class="table table-bordered table-striped">-->
+<!--            <thead class="thead-dark">-->
+<!--                <tr>-->
+<!--                    <th>ID</th>-->
+<!--                    <th>Customer</th>-->
+<!--                    <th>Photographer</th>-->
+<!--                    <th>Date</th>-->
+<!--                    <th>Cost</th>-->
+<!--                    <th>Action</th>-->
+<!--                </tr>-->
+<!--            </thead>-->
+<!--            <tbody>-->
+<!--                {% for booking in pending_bookings %}-->
+<!--                <tr>-->
+<!--                    <td>{{ booking.id }}</td>-->
+<!--                    <td>{{ booking.user.username }}</td>-->
+<!--                    <td>{{ booking.photographer_data.user.username }}</td>-->
+<!--                    <td>{{ booking.event_date }}</td>-->
+<!--                    <td>₹{{ booking.total_cost }}</td>-->
+<!--                    <td>-->
+<!--                        <button-->
+<!--                            id="approve-btn-{{ booking.id }}"-->
+<!--                            data-id="{{ booking.id }}"-->
+<!--                            class="btn btn-success approve-btn">-->
+<!--                            Approve-->
+<!--                        </button>-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                {% endfor %}-->
+<!--            </tbody>-->
+<!--        </table>-->
+<!--        {% else %}-->
+<!--        <p class="text-center text-muted">No pending bookings to approve.</p>-->
+<!--        {% endif %}-->
+<!--    </div>-->
+
+<!--    <script>-->
+<!--        const csrfToken = '{{ csrf_token }}';-->
+
+<!--        // Approve booking logic-->
+<!--        document.querySelectorAll('.approve-btn').forEach(button => {-->
+<!--            button.addEventListener('click', function () {-->
+<!--                const bookingId = this.getAttribute('data-id');-->
+<!--                fetch(`/approve_booking/${bookingId}/`, {-->
+<!--                    method: 'POST',-->
+<!--                    headers: {-->
+<!--                        'X-CSRFToken': csrfToken,-->
+<!--                        'Content-Type': 'application/json',-->
+<!--                    },-->
+<!--                })-->
+<!--                .then(response => response.json())-->
+<!--                .then(data => {-->
+<!--                    if (data.status === 'approved') {-->
+<!--                        const btn = document.getElementById(`approve-btn-${data.booking_id}`);-->
+<!--                        btn.textContent = 'Approved';-->
+<!--                        btn.classList.replace('btn-success', 'btn-secondary');-->
+<!--                        btn.setAttribute('disabled', true);-->
+<!--                    } else {-->
+<!--                        alert('Failed to approve booking. Please try again.');-->
+<!--                    }-->
+<!--                })-->
+<!--                .catch(error => {-->
+<!--                    console.error('Error:', error);-->
+<!--                    alert('An error occurred. Please try again.');-->
+<!--                });-->
+<!--            });-->
+<!--        });-->
+<!--    </script>-->
+<!--    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>-->
+<!--</body>-->
+
+<!--</html>-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Pending Bookings</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url("{% static 'img/hero/photographer.jpg' %}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            color: white;
+        }
+
+        .header-section {
+            background-color: rgba(0, 0, 0, 0.85);
+            color: white;
+            padding: 23px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .header-section .logo img {
+            height: 50px;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-menu ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .nav-menu ul li {
+            margin: 0 20px;
+        }
+
+        .nav-menu ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .nav-menu ul li a:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .notification-icon {
+            position: relative;
+            color: white;
+            font-size: 18px;
+            text-decoration: none;
+            padding: 8px 10px;
+            transition: color 0.3s;
+        }
+
+        .notification-icon:hover {
+            color: #4CAF50;
+        }
+
+        .notification-icon .fa-bell {
+            font-size: 20px;
+        }
+
+        .notification-icon .badge {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: red;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 2px 6px;
+            border-radius: 50%;
+            transform: translate(50%, -50%);
+        }
+
+        .container {
+            margin-top: 30px;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            color: #333;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        .table th,
+        .table td {
+            vertical-align: middle;
+        }
+
+        .btn-disabled {
+            cursor: not-allowed;
+        }
+
+        .text-muted {
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header-section">
+        <div class="container-fluid d-flex align-items-center justify-content-between">
+            <div class="logo">
+                <a href="./index.html">
+                    <img src="{% static 'img/logo.png' %}" alt="Logo">
+                </a>
+            </div>
+            <nav class="nav-menu">
+                <ul class="d-flex">
+                    <li><a href="admin_dashboard">Home</a></li>
+                    <li><a href="admin_view_photographer">Photographers</a></li>
+                    <li><a href="view_user">Users</a></li>
+                    <li><a href="accept_booking">Approve booking</a></li>
+                    <li>
+                        <a href="{% url 'admin_notification' %}" class="notification-icon">
+                            <i class="fa fa-bell"></i>
+                            {% if unread_count > 0 %}
+                                <span class="badge">{{ unread_count }}</span>
+                            {% endif %}
+                        </a>
+                    </li>
+                    <li><a href="../admin_feedback_view">Feedbacks</a></li>
+                    <li><a href="logout">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Pending Bookings -->
+    <div class="container">
+        <h2 class="text-center mb-4">Pending Bookings</h2>
+        {% if pending_bookings %}
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Customer</th>
+                    <th>Photographer</th>
+                    <th>Date</th>
+                    <th>Cost</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for booking in pending_bookings %}
+                <tr>
+                    <td>{{ booking.id }}</td>
+                    <td>{{ booking.user.username }}</td>
+                    <td>{{ booking.photographer_data.user.username }}</td>
+                    <td>{{ booking.event_date }}</td>
+                    <td>₹{{ booking.total_cost }}</td>
+                    <td>
+                        <button
+                            id="approve-btn-{{ booking.id }}"
+                            data-id="{{ booking.id }}"
+                            class="btn btn-success approve-btn">
+                            Approve
+                        </button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p class="text-center text-muted">No pending bookings to approve.</p>
+        {% endif %}
+    </div>
+
+    <script>
+        const csrfToken = '{{ csrf_token }}';
+
+        // Approve booking logic
+        document.querySelectorAll('.approve-btn').forEach(button => {
+            button.addEventListener('click', function () {
+                const bookingId = this.getAttribute('data-id');
+                fetch(`/approve_booking/${bookingId}/`, {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRFToken': csrfToken,
+                        'Content-Type': 'application/json',
+                    },
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'approved') {
+                        const btn = document.getElementById(`approve-btn-${data.booking_id}`);
+                        btn.textContent = 'Approved';
+                        btn.classList.replace('btn-success', 'btn-secondary');
+                        btn.setAttribute('disabled', true);
+                    } else {
+                        alert('Failed to approve booking. Please try again.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('An error occurred. Please try again.');
+                });
+            });
+        });
+    </script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+
+</html>

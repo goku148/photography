@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="description" content="Phozogy Template">
+    <meta name="keywords" content="Phozogy, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Phozogy | Template</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Quantico:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/elegant-icons.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/slicknav.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+
+     <style>
+        /* Updated Header Section */
+        .header-section {
+            background-color: black;
+            color: white;
+            padding: 5px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-section .logo img {
+            height: 28px;
+        }
+
+        .nav-menu ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-menu ul li {
+            margin: 0 10px;
+        }
+
+        .nav-menu ul li a {
+            text-transform: capitalize;
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 27px 15px;
+             line-height: 0.6; /* Adjust line height for better spacing */
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .nav-menu ul li a:hover {
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 1px;
+        }
+
+        /* Portfolio Section Styles */
+        .portfolio-item {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center center;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .portfolio-item.set-bg {
+            height: 400px;
+        }
+
+        .portfolio-item:hover {
+            transform: scale(1.05);
+        }
+
+        .pf-text {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .pf-text h4 {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .pf-text span {
+            font-size: 16px;
+            color: #f8f8f8;
+        }
+    </style>
+</head>
+
+<body >
+    <!-- Page Preloder -->
+
+
+    <!-- Header Section Begin -->
+      <header style="background-color:black;color:white;" class="header-section">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="logo" style="float: left;">
+                        <a href="./index.html">
+                            <img src="{% static 'img/logo.png' %}" alt="">
+                        </a>
+                    </div>
+                    <nav class="nav-menu mobile-menu" style="float: right;">
+                        <ul>
+
+                             <li ><a href="../home"  style="text-transform: capitalize; color: white;">Home</a></li>
+                            <li><a href="../about1"  style="text-transform: capitalize; color: white;">About</a></li>
+                            <li><a href="../service1"  style="text-transform: capitalize; color: white;">Services</a></li>
+                             <li><a href="../all_photographers_imagess/"  style="text-transform: capitalize; color: white;">Gallery</a></li>
+                            <li><a href="../login_view"  style="text-transform: capitalize; color: white;">Login</a></li>
+                            <li><a href="../reg"  style="text-transform: capitalize; color: white;">Sign Up</a></li>
+                        </ul>
+                    </nav>
+
+                    <div id="mobile-menu-wrap"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Header End -->
+
+    <section class="portfolio-section portfolio-page spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title"></div>
+                    <div class="filter-controls">
+                        <ul>
+                            <li class="active" data-filter="*">All</li>
+                            <li data-filter=".wedding">Wedding</li>
+                            <li data-filter=".natural">Natural</li>
+                            <li data-filter=".fashion">Fashion</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row portfolio-filter">
+                <!-- Wedding Images Section -->
+                {% for image in wedding_images %}
+                <div class="col-md-4 p-0 pf-item wedding">
+                    <div class="portfolio-item" style="background-image: url('{{ image.image.url }}');">
+                        <a href="{{ image.image.url }}" class="pf-icon image-popup">
+                            <span class="icon_plus"></span>
+                        </a>
+                        <div class="pf-text">
+                            <h4>Wedding Shoot</h4>
+                            <span>Wedding</span>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <p>No wedding images uploaded yet...</p>
+                {% endfor %}
+
+                <!-- Natural Images Section -->
+                {% for image in natural_images %}
+                <div class="col-md-4 p-0 pf-item natural">
+                    <div class="portfolio-item" style="background-image: url('{{ image.image.url }}');">
+                        <a href="{{ image.image.url }}" class="pf-icon image-popup">
+                            <span class="icon_plus"></span>
+                        </a>
+                        <div class="pf-text">
+                            <h4>Natural Beauty</h4>
+                            <span>Natural</span>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <p>No natural images uploaded yet...</p>
+                {% endfor %}
+
+                <!-- Fashion Images Section -->
+                {% for image in fashion_images %}
+                <div class="col-md-4 p-0 pf-item fashion">
+                    <div class="portfolio-item" style="background-image: url('{{ image.image.url }}');">
+                        <a href="{{ image.image.url }}" class="pf-icon image-popup">
+                            <span class="icon_plus"></span>
+                        </a>
+                        <div class="pf-text">
+                            <h4>Fashion Photography</h4>
+                            <span>Fashion</span>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <p>No fashion images uploaded yet...</p>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="load-more-btn portfolio-btn">
+            <a href="#">Load More</a>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'js/isotope.pkgd.min.js' %}"></script>
+    <script src="{% static 'js/masonry.pkgd.min.js' %}"></script>
+    <script src="{% static 'js/jquery.slicknav.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>

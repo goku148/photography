@@ -1,0 +1,377 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+
+<!--<head>-->
+<!--    {% load static %}-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Photographer Dashboard - Approved Bookings</title>-->
+<!--    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">-->
+<!--    <style>-->
+<!--        body {-->
+<!--            font-family: 'Open Sans', sans-serif;-->
+<!--            margin: 0;-->
+<!--            padding: 0;-->
+<!--            background-image: url("{% static 'img/hero/photographer.jpg' %}");-->
+<!--            background-size: cover;-->
+<!--            background-repeat: no-repeat;-->
+<!--            background-attachment: fixed;-->
+<!--            background-position: center;-->
+<!--        }-->
+
+<!--        .header-section {-->
+<!--            background-color: rgba(0, 0, 0, 0.85);-->
+<!--            color: white;-->
+<!--            padding: 30px 0;-->
+<!--        }-->
+
+<!--        .logo img {-->
+<!--            max-height: 50px;-->
+<!--        }-->
+
+<!--        .nav-menu {-->
+<!--            flex-grow: 1;-->
+<!--        }-->
+
+<!--        .nav-menu ul {-->
+<!--            list-style: none;-->
+<!--            display: flex;-->
+<!--            justify-content: flex-end;-->
+<!--            padding: 0;-->
+<!--            margin: 0;-->
+<!--        }-->
+
+<!--        .nav-menu ul li {-->
+<!--            margin-left: 20px;-->
+<!--        }-->
+
+<!--        .nav-menu ul li a {-->
+<!--            color: white;-->
+<!--            text-decoration: none;-->
+<!--            font-weight: bold;-->
+<!--            padding: 8px 12px;-->
+<!--            border-radius: 5px;-->
+<!--            transition: background-color 0.3s, color 0.3s;-->
+<!--        }-->
+
+<!--        .nav-menu ul li a:hover {-->
+<!--            background-color: #4CAF50;-->
+<!--            color: white;-->
+<!--        }-->
+
+<!--        .container {-->
+<!--            margin-top: 30px ;-->
+<!--            background: rgba(255, 255, 255, 0.9);-->
+<!--            padding: 26px;-->
+<!--            border-radius: 8px;-->
+<!--            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);-->
+<!--        }-->
+
+<!--        .table {-->
+<!--            width: 100%;-->
+<!--            border-collapse: collapse;-->
+<!--            margin-bottom: 20px;-->
+<!--        }-->
+
+<!--        .table th,-->
+<!--        .table td {-->
+<!--            border: 1px solid #ddd;-->
+<!--            padding: 8px;-->
+<!--            text-align: left;-->
+<!--        }-->
+
+<!--        .table th {-->
+<!--            background-color: #f2f2f2;-->
+<!--            font-weight: bold;-->
+<!--        }-->
+
+<!--        .status-approved {-->
+<!--            background-color: #28a745;-->
+<!--            color: white;-->
+<!--            padding: 5px 10px;-->
+<!--            border-radius: 3px;-->
+<!--            display: inline-block;-->
+<!--        }-->
+
+<!--        .text-muted {-->
+<!--            text-align: center;-->
+<!--            margin-top: 20px;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+
+<!--<body>-->
+<!--    <header class="header-section">-->
+<!--        <div class="container-fluid">-->
+<!--            <div class="row">-->
+<!--                <div class="col-lg-12 d-flex align-items-center">-->
+<!--                    <div class="logo">-->
+<!--                        <a href="./index.html">-->
+<!--                            <img src="{% static 'img/logo.png' %}" alt="Logo">-->
+<!--                        </a>-->
+<!--                    </div>-->
+<!--                    <nav class="nav-menu">-->
+<!--                        <ul class="d-flex">-->
+<!--                            <li class="active"><a href="../photographer_dashboard">Home</a></li>-->
+<!--                            <li><a href="../show_images">Show Images</a></li>-->
+<!--                            <li><a href="../upload_image/">Upload Image</a></li>-->
+<!--                            <li><a href="../add_photographer">Add Details</a></li>-->
+<!--                            <li><a href="../photographer_aproval/">Bookings</a></li>-->
+<!--                            <li><a href="../cameraman_profile">Profile</a></li>-->
+<!--                            <li><a href="../logout">Logout</a></li>-->
+<!--                        </ul>-->
+<!--                    </nav>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </header>-->
+<!--    <div class="container">-->
+<!--        <h2 class="text-center">Approved Bookings</h2>-->
+<!--        <table class="table">-->
+<!--            <thead>-->
+<!--                <tr>-->
+<!--                    <th>Booking ID</th>-->
+<!--                    <th>Customer</th>-->
+<!--                    <th>Event Date</th>-->
+<!--                    <th>Location</th>-->
+<!--                    <th>Total Cost</th>-->
+<!--                    <th>Status</th>-->
+<!--                </tr>-->
+<!--            </thead>-->
+<!--            <tbody>-->
+<!--                {% for booking in approved_bookings %}-->
+<!--                <tr>-->
+<!--                    <td>{{ booking.id }}</td>-->
+<!--                    <td>{{ booking.user.username }}</td>-->
+<!--                    <td>{{ booking.event_date }}</td>-->
+<!--                    <td>{{ booking.event_location }}</td>-->
+<!--                    <td>₹{{ booking.total_cost }}</td>-->
+<!--                    <td><span class="status-approved">Approved</span></td>-->
+<!--                </tr>-->
+<!--                {% empty %}-->
+<!--                <tr>-->
+<!--                    <td colspan="6" class="text-muted">No approved bookings available.</td>-->
+<!--                </tr>-->
+<!--                {% endfor %}-->
+<!--            </tbody>-->
+<!--        </table>-->
+<!--    </div>-->
+
+<!--    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>-->
+<!--</body>-->
+
+<!--</html>-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photographer Dashboard - Approved Bookings</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url("{% static 'img/hero/photographer.jpg' %}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+        }
+
+        .header-section {
+            background-color: rgba(0, 0, 0, 0.85);
+            color: white;
+            padding: 33px 0;
+        }
+
+        .logo img {
+            max-height: 50px;
+        }
+
+        .nav-menu {
+            flex-grow: 1;
+        }
+
+        .nav-menu ul {
+            list-style: none;
+            display: flex;
+            justify-content: flex-end;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-menu ul li {
+            margin-left: 20px;
+        }
+
+        .nav-menu ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .nav-menu ul li a:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .container {
+            margin-top: 60px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 26px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .table th,
+        .table td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+            text-color: white;
+        }
+
+        .table th {
+            background-color: #5c8a8a;
+            font-weight: bold;
+        }
+
+        .status-approved {
+            background-color: grey;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+            display: inline-block;
+        }
+
+        .text-muted {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header class="header-section">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 d-flex align-items-center">
+                    <div class="logo">
+                        <a href="./index.html">
+                            <img src="{% static 'img/logo.png' %}" alt="Logo">
+                        </a>
+                    </div>
+                    <nav class="nav-menu">
+                        <ul class="d-flex">
+                            <li class="active"><a href="../photographer_dashboard">Home</a></li>
+                            <li><a href="../show_images">Show Images</a></li>
+                            <li><a href="../upload_image/">Upload Image</a></li>
+                            <li><a href="../add_photographer">Add Details</a></li>
+                            <li><a href="../photographer_aproval/">  Bookings</a></li>
+                            <li><a href="../cameraman_profile">Profile</a></li>
+                            <li><a href="../logout">Logout</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Content Section -->
+    <div class="container">
+        <h2 class="text-center">Approved Bookings</h2>
+        <br>
+        <table class="table">
+            <thead>
+                <tr>
+<!--                    <th>Booking ID</th>-->
+                    <th>Customer</th>
+                    <th>Event Date</th>
+                    <th>Location</th>
+                    <th>Total Cost</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for booking in approved_bookings %}
+                <tr>
+<!--                    <td>{{ booking.id }}</td>-->
+                    <td>{{ booking.user.username }}</td>
+                    <td>{{ booking.event_date }}</td>
+                    <td>{{ booking.event_location }}</td>
+                    <td>₹{{ booking.total_cost }}</td>
+                    <td><span class="status-approved">Approved</span></td>
+                    <td>
+                        <button class="btn btn-success"
+                                id="complete-btn-{{ booking.id }}"
+                                data-id="{{ booking.id }}"
+                                {% if booking.work_completed %}disabled{% endif %}>
+                            {% if booking.work_completed %}Completed{% else %}Are you done{% endif %}
+                        </button>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="7" class="text-muted">No approved bookings available.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+
+    <script>
+        const csrfToken = '{{ csrf_token }}';
+
+        // Attach event listener for "Mark as Completed" buttons
+        document.querySelectorAll('.btn-success').forEach(button => {
+            button.addEventListener('click', function () {
+                const bookingId = this.getAttribute('data-id');
+
+                fetch(`/mark_work_completed/`, {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRFToken': csrfToken,
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ booking_id: bookingId }),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        const btn = document.getElementById(`complete-btn-${data.booking_id}`);
+                        btn.textContent = 'Completed';
+                        btn.classList.replace('btn-success', 'btn-secondary');
+                        btn.setAttribute('disabled', true);
+                    } else {
+                        alert('Failed to mark work as completed. Please try again.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('An error occurred. Please try again.');
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

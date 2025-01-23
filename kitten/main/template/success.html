@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Success</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url("{% static 'img/hero/photographer.jpg' %}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+      .header-section {
+    background-color: rgba(0, 0, 0, 0.85);
+    color: white;
+    padding: 39px 0;
+}
+
+.nav-menu {
+    margin-left: auto; /* Pushes the menu to the far right */
+}
+
+.nav-menu ul {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-menu ul li {
+    margin-left: 20px;
+}
+
+.nav-menu ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 7px 0px;
+    border-radius: 5px;
+    font-size: 17px;
+    transition: background-color 0.3s, color 0.3s;
+      text-transform: capitalize; /* Makes only the first letter uppercase */
+}
+
+.nav-menu ul li a:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+        h1 {
+            color: #28a745;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .details {
+            margin: 20px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .details p {
+            margin: 5px 0;
+        }
+        .details strong {
+            color: #000;
+        }
+        .btn-home {
+            display: block;
+            margin: 20px auto;
+            width: 200px;
+            background: #28a745;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .btn-home:hover {
+            background: #218838;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+ <header class="header-section">
+    <div class="container-fluid d-flex align-items-center">
+        <div class="logo">
+            <a href="./index.html">
+                <img src="{% static 'img/logo.png' %}" alt="Logo">
+            </a>
+        </div>
+        <nav class="nav-menu">
+            <ul class="d-flex">
+                <li><a href="user_dashboard">Home</a></li>
+                        <li><a href="about">About</a></li>
+                        <li><a href="service">Services</a></li>
+<!--                        <li><a href="viewproduct">Accessories</a></li>-->
+                        <li><a href="show_photographer">Photographers</a></li>
+                        <li><a href="user_profile/">Profile</a></li>
+                        <li><a href="logout">Logout</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+    <div class="container">
+        <h1>Booking Successful!</h1>
+        <p class="lead text-center">Thank you for booking with us. Your booking details are as follows:</p>
+
+        <div class="details">
+<!--            <p><strong>Photographer:</strong> {{ booking.photographer_data.fullname }}</p>-->
+            <p><strong>Customer:</strong> {{ booking.user.username }}</p>
+            <p><strong>Email:</strong> {{ booking.user.email }}</p>
+            <p><strong>Event Type:</strong> {{ booking.event_type }}</p>
+            <p><strong>Event Date:</strong> {{ booking.event_date }}</p>
+            <p><strong>Event Location:</strong> {{ booking.event_location }}</p>
+            <p><strong>Duration:</strong> {{ booking.hours_needed }} hours</p>
+            <p><strong>Hourly Rate:</strong> ₹{{ booking.hourly_rate }}</p>
+            <p><strong>Total Cost:</strong> ₹{{ booking.total_cost }}</p>
+            <p><strong>Additional Notes:</strong> {{ booking.additional_notes }}</p>
+        </div>
+
+        <a href="../user_dashboard" class="btn-home">Go to Home</a>
+    </div>
+</body>
+</html>
